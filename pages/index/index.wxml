@@ -1,6 +1,6 @@
 <!--index.wxml-->
-<view class="container">
-  <view class="userinfo">
+<view>
+  <view class="userinfo" wx:if="{{false}}">
     <block wx:if="{{canIUseOpenData}}">
       <view class="userinfo-avatar" bindtap="bindViewTap">
         <open-data type="userAvatarUrl"></open-data>
@@ -17,7 +17,32 @@
       <text class="userinfo-nickname">{{userInfo.nickName}}</text>
     </block>
   </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
+  <view class="page-body">
+    <view class="page-section page-section-spacing swiper">
+      <swiper indicator-dots="{{indicatorDots}}" circular
+        autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+        <block wx:for="{{background}}" wx:key="*this">
+          <swiper-item>
+            <view class="swiper-item">
+              <image bindtap="bindViewTap" class="img-banner" src="{{'../../assets/images/'+item}}" mode="cover"></image>
+            </view>
+          </swiper-item>
+        </block>
+      </swiper>
+    </view>
+  </view>
+  <view class="page-body">
+    <view class="page-section page-section-spacing swiper">
+      <swiper indicator-dots="{{false}}" previous-margin="20px"	display-multiple-items="4" next-margin="20px"
+        autoplay="{{false}}" interval="{{interval}}" duration="{{duration}}">
+        <block wx:for="{{background}}" wx:key="*this">
+          <swiper-item>
+            <view class="swiper-item">
+              <image bindtap="bindViewTap" class="img-banner" src="{{'../../assets/images/'+item}}" mode="cover"></image>
+            </view>
+          </swiper-item>
+        </block>
+      </swiper>
+    </view>
   </view>
 </view>

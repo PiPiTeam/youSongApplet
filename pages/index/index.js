@@ -3,13 +3,25 @@
 const app = getApp()
 
 Page({
+  onShareAppMessage() {
+    return {
+      title: 'swiper',
+      path: 'page/component/pages/swiper/swiper'
+    }
+  },
   data: {
     motto: 'Hello World',
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     canIUseGetUserProfile: false,
-    canIUseOpenData: wx.canIUse('open-data.type.userAvatarUrl') && wx.canIUse('open-data.type.userNickName') // 如需尝试获取用户信息可改为false
+    canIUseOpenData: wx.canIUse('open-data.type.userAvatarUrl') && wx.canIUse('open-data.type.userNickName'), // 如需尝试获取用户信息可改为false
+    background: ['demo1.png', 'demo2.png', 'demo1.png', 'demo2.png'],
+    indicatorDots: true,
+    vertical: false,
+    autoplay: true,
+    interval: 2000,
+    duration: 500
   },
   // 事件处理函数
   bindViewTap() {
