@@ -1,48 +1,29 @@
 <!--index.wxml-->
 <view>
-  <view class="userinfo" wx:if="{{false}}">
-    <block wx:if="{{canIUseOpenData}}">
-      <view class="userinfo-avatar" bindtap="bindViewTap">
-        <open-data type="userAvatarUrl"></open-data>
+  <view class="page-body">
+    <view class="page-head">
+      <image class="head-img" src="../../assets/images/banner_background@2x.png" lazy-load="true"></image>
+      <view class="page-swiper">
+        <swiper class="swiper-item" indicator-dots="{{indicatorDots}}" circular	display-multiple-items="1"
+          indicator-active-color="#FFC892" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+          <block wx:for="{{background}}" wx:key="*this">
+            <swiper-item>
+              <view>
+                <image bindtap="bindViewTap" class="img-banner" src="{{'../../assets/images/'+item}}" mode="cover"></image>
+              </view>
+            </swiper-item>
+          </block>
+        </swiper>
       </view>
-      <open-data type="userNickName"></open-data>
-    </block>
-    <block wx:elif="{{!hasUserInfo}}">
-      <button wx:if="{{canIUseGetUserProfile}}" bindtap="getUserProfile"> 获取头像昵称 </button>
-      <button wx:elif="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-      <view wx:else> 请使用1.4.4及以上版本基础库 </view>
-    </block>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
-  </view>
-  <view class="page-body">
-    <view class="page-section page-section-spacing swiper">
-      <swiper indicator-dots="{{indicatorDots}}" circular
-        autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
-        <block wx:for="{{background}}" wx:key="*this">
-          <swiper-item>
-            <view class="swiper-item">
-              <image bindtap="bindViewTap" class="img-banner" src="{{'../../assets/images/'+item}}" mode="cover"></image>
-            </view>
-          </swiper-item>
-        </block>
-      </swiper>
     </view>
-  </view>
-  <view class="page-body">
-    <view class="page-section page-section-spacing swiper">
-      <swiper indicator-dots="{{false}}" previous-margin="20px"	display-multiple-items="4" next-margin="20px"
-        autoplay="{{false}}" interval="{{interval}}" duration="{{duration}}">
+    <view class="popular-courses">
+      <scroll-view class="scroll-view_H" scroll-x="true" bindscroll="scroll" style="width: 100%">
         <block wx:for="{{background}}" wx:key="*this">
-          <swiper-item>
-            <view class="swiper-item">
-              <image bindtap="bindViewTap" class="img-banner" src="{{'../../assets/images/'+item}}" mode="cover"></image>
-            </view>
-          </swiper-item>
+          <view class="swiper-courses">
+            <image bindtap="bindViewTap" class="img-courses" src="{{'../../assets/images/'+item}}" mode="cover"></image>
+          </view>
         </block>
-      </swiper>
+      </scroll-view>
     </view>
   </view>
 </view>

@@ -16,7 +16,7 @@ Page({
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     canIUseGetUserProfile: false,
     canIUseOpenData: wx.canIUse('open-data.type.userAvatarUrl') && wx.canIUse('open-data.type.userNickName'), // 如需尝试获取用户信息可改为false
-    background: ['demo1.png', 'demo2.png', 'demo1.png', 'demo2.png'],
+    background: ['banner@2x.png', 'banner@2x.png', 'banner@2x.png', 'banner@2x.png'],
     indicatorDots: true,
     vertical: false,
     autoplay: true,
