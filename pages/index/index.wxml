@@ -1,29 +1,49 @@
 <!--index.wxml-->
-<view>
-  <view class="page-body">
-    <view class="page-head">
-      <image class="head-img" src="../../assets/images/banner_background@2x.png" lazy-load="true"></image>
-      <view class="page-swiper">
-        <swiper class="swiper-item" indicator-dots="{{indicatorDots}}" circular	display-multiple-items="1"
-          indicator-active-color="#FFC892" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
-          <block wx:for="{{background}}" wx:key="*this">
-            <swiper-item>
-              <view>
-                <image bindtap="bindViewTap" class="img-banner" src="{{'../../assets/images/'+item}}" mode="cover"></image>
-              </view>
-            </swiper-item>
-          </block>
-        </swiper>
-      </view>
-    </view>
-    <view class="popular-courses">
-      <scroll-view class="scroll-view_H" scroll-x="true" bindscroll="scroll" style="width: 100%">
+<view class="page-body">
+  <view class="page-head">
+    <image class="head-img" src="../../assets/images/banner_background@2x.png" mode="bottom" lazy-load="true"></image>
+    <view class="page-swiper">
+      <swiper class="swiper-item" indicator-dots="{{indicatorDots}}" circular	display-multiple-items="1"
+        indicator-active-color="#FFC892" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
         <block wx:for="{{background}}" wx:key="*this">
-          <view class="swiper-courses">
-            <image bindtap="bindViewTap" class="img-courses" src="{{'../../assets/images/'+item}}" mode="cover"></image>
-          </view>
+          <swiper-item>
+            <view>
+              <image bindtap="bindViewTap" class="img-banner" src="{{'../../assets/images/'+item}}" mode="cover"></image>
+            </view>
+          </swiper-item>
         </block>
-      </scroll-view>
+      </swiper>
+    </view>
+  </view>
+  <view class="popular-courses">
+    <view class="popular-title">
+      <view class="popular-border"></view>
+      <view><text class="popular-chian">热门课程</text></view>
+      <view><text class="popular-english">/Popular Courses</text></view>
+    </view>
+    <view class="popular-scroll">
+      <swiper display-multiple-items="3.2">
+        <block wx:for="{{coursesBanner}}" wx:key="*this">
+          <swiper-item>
+            <view class="swiper-courses">
+              <image class="img-courses" src="{{'../../assets/images/'+item}}" mode="cover"></image>
+              <view class="">
+                <text class="">{{coursesName[index]}}</text>
+              </view>
+            </view>
+          </swiper-item>
+        </block>
+      </swiper>
+    </view>
+  </view>
+  <view class="popular-courses">
+    <view class="popular-title">
+      <view class="popular-border"></view>
+      <view><text class="popular-chian">热门课程</text></view>
+      <view><text class="popular-english">/Popular Courses</text></view>
+    </view>
+    <view class="popular-scroll">
+      
     </view>
   </view>
 </view>

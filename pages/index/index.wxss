@@ -1,11 +1,14 @@
 /**index.wxss**/
+.page-body{
+  background-color: rgb(247, 247, 247);
+}
 .page-head{
   width: 100%;
   height: 442rpx;
 }
 .head-img{
   width: 100%;
-  height: 442rpx;
+  height: 321rpx;
 }
 .page-swiper{
   width: 670rpx;
@@ -14,9 +17,67 @@
   left: 40rpx;
 }
 .swiper-item{
-  height: 380rpx;
+  height: 318rpx;
 }
 .img-banner{
   width: 670rpx;
   height: 320rpx;
+}
+.popular-courses{
+  margin-top: 20rpx;
+}
+.popular-title{
+  width: 100%;
+  height: 50rpx;
+  display: flex;
+  margin-left: 40rpx;
+}
+.popular-border{
+  width: 8rpx;
+  height: 30rpx;
+  margin-top: 10rpx;
+  border-radius: 4rpx;
+  background: #ffc892;
+}
+
+.popular-chian{
+  width: 144rpx;
+  height: 46rpx;
+  margin: 0 20rpx;
+  color: #2a2b2d;
+  font-family: "PingFang-SC-Bold";
+  font-size: 36rpx;
+  font-weight: 400;
+  line-height: 46rpx;
+}
+.popular-english{
+  width: 198rpx;
+  height: 30rpx;
+  color: #2a2b2d;
+  font-family: "PingFang-SC-Medium";
+  font-size: 24rpx;
+  font-weight: 400;
+  line-height: 30rpx;
+}
+
+.popular-scroll{
+  width: 100%;
+  height: 280rpx;
+  margin-top: 20rpx;
+}
+.swiper-courses{
+  width: 196rpx;
+  height: 250rpx;
+  border-radius: 8px;
+  background: #ffffff;
+  box-shadow: 0px 2px 7px rgba(0,0,0,0.06);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 40rpx;
+  padding-top: 30rpx;
+}
+.img-courses{
+  width: 110rpx;
+  height: 180rpx;
 }
