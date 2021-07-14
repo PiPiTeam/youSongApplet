@@ -22,7 +22,7 @@
       <view><text class="popular-english">/Popular Courses</text></view>
     </view>
     <view class="popular-scroll">
-      <swiper display-multiple-items="3.2">
+      <swiper display-multiple-items="3">
         <block wx:for="{{coursesBanner}}" wx:key="*this">
           <swiper-item>
             <view class="swiper-courses">
@@ -36,14 +36,44 @@
       </swiper>
     </view>
   </view>
-  <view class="popular-courses">
-    <view class="popular-title">
-      <view class="popular-border"></view>
-      <view><text class="popular-chian">热门课程</text></view>
-      <view><text class="popular-english">/Popular Courses</text></view>
+  <view class="popular-courses popular-event">
+    <view class="popular-active">
+      <view class="popular-title">
+        <view class="popular-border"></view>
+        <view><text class="popular-chian">最新活动</text></view>
+        <view><text class="popular-english">/Latest Events</text></view>
+      </view>
+      <view><text class="popular-english popular-more">查看更多 ></text></view>
     </view>
     <view class="popular-scroll">
-      
+      <block wx:for="{{events}}" wx:key="*this">
+        <view class="swiper-courses popular-events">
+          <image class="img-events" src="{{'../../assets/images/'+item}}" mode="cover"></image>
+          <view class="events-right">
+            <view class="events-title">
+              <view class="events-header">
+                <view><text>{{coursesName[index]}}</text></view>
+                <image class="events-tag" src="../../assets/images/new@2x.png" mode="cover"></image>
+              </view>
+              <view class="events-time"><text>{{coursesName[index]}}</text></view>
+            </view>
+            <view class="events-text"><text class="">{{coursesName[index]}}如果有真才艺，就自己为自己赢取深造机会，罗森音乐琴行为你们提供竞艺平台，也为你们提供免费深造的机会。</text></view>
+          </view>
+        </view>
+      </block>
+    </view>
+  </view>
+  <view class="popular-courses popular-introduction">
+    <view class="popular-title">
+      <view class="popular-border"></view>
+      <view><text class="popular-chian">本店介绍</text></view>
+      <view><text class="popular-english">/Store Introduction</text></view>
+    </view>
+    <view class="introduction-body">
+      <image class="img-introduction" src="../../assets/images/store_introduction@2x.png" mode="cover"></image>
+      <view class="introduction-text">
+        <text>国家一级技师琴行，由曾获钢琴家和CCTV邀请赴维也纳金色大厅和纽约的江伟先生创办，直达工厂挑选好琴，销售雅马哈、卡瓦依、珠江、哈曼尼、首德、洛尔菲等品牌，并有租琴调琴学琴等音乐培训。音悦家琴行是弗朗茨·李斯特国际青少年钢琴比赛、《爸爸去哪儿》系列活动、马克西姆及肯尼基巡演、央视《朗读者》节目的协助单位，也是全国50多个音乐厅的技师支持单位。</text>
+      </view>
     </view>
   </view>
 </view>

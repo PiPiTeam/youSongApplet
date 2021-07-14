@@ -16,7 +16,8 @@ Page({
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     canIUseGetUserProfile: false,
     canIUseOpenData: wx.canIUse('open-data.type.userAvatarUrl') && wx.canIUse('open-data.type.userNickName'), // 如需尝试获取用户信息可改为false
-    background: ['banner@2x.png', 'banner@2x.png', 'banner@2x.png', 'banner@2x.png'],
+    background: ['banner@2x.png', 'banner@2x.png', 'banner@2x.png'],
+    events:['activity1@2x.png', 'activity2@2x.png', 'activity3@2x.png'],
     coursesBanner: ['guitar@2x.png','piano@2x.png','sachs@2x.png', 'violin@2x.png','drum_kit@2x.png', 'guzheng@2x.png', 'africandrum@2x.png', 'pop_vocal@2x.png', 'ukulele@2x.png',],
     coursesName: ['吉他课程', '钢琴课程', '萨克斯课程', '小提琴课程', '架子鼓课程', '古筝课程', '非洲鼓课程', '流行声乐课程', '尤克里里课程' ],
     indicatorDots: true,
