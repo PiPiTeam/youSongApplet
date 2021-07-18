@@ -76,4 +76,42 @@
       </view>
     </view>
   </view>
+  <view class="popular-courses popular-introduction">
+    <view class="popular-title">
+      <view class="popular-border"></view>
+      <view><text class="popular-chian">学员风采</text></view>
+      <view><text class="popular-english">/Student Style</text></view>
+    </view>
+    <view class="popular-student">
+      <block wx:for="{{background}}" wx:key="*this">
+        <view class="swiper-courses">
+          <image class="img-courses" src="{{'../../assets/images/'+item}}" mode="cover"></image>
+          <view class="">
+            <text class="">{{coursesName[index]}}</text>
+          </view>
+        </view>
+      </block>
+    </view>
+  </view>
+  <view class="popular-courses popular-introduction">
+    <view class="popular-title">
+      <view class="popular-border"></view>
+      <view><text class="popular-chian">热销产品</text></view>
+      <view><text class="popular-english">/Hot Products</text></view>
+    </view>
+    <view class="popular-products">
+      <image class="img-introduction" src="../../assets/images/store_introduction@2x.png" mode="cover"></image>
+      <view class="introduction-text">
+        <text></text>
+      </view>
+    </view>
+  </view>
+  <view class="popular-courses">
+    <view class="introduction-body">
+      <image class="img-introduction" src="../../assets/images/store_introduction@2x.png" mode="cover"></image>
+      <view class="introduction-text">
+        <text></text>
+      </view>
+    </view>
+  </view>
 </view>
