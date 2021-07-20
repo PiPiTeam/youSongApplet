@@ -8,7 +8,7 @@
         <block wx:for="{{background}}" wx:key="*this">
           <swiper-item>
             <view>
-              <image bindtap="bindViewTap" class="img-banner" src="{{'../../assets/images/'+item}}" mode="cover"></image>
+              <image class="img-banner" src="{{'../../assets/images/'+item}}" mode="cover"></image>
             </view>
           </swiper-item>
         </block>
@@ -76,7 +76,7 @@
       </view>
     </view>
   </view>
-  <view class="popular-courses popular-introduction">
+  <view class="popular-courses popular-students">
     <view class="popular-title">
       <view class="popular-border"></view>
       <view><text class="popular-chian">学员风采</text></view>
@@ -84,9 +84,9 @@
     </view>
     <view class="popular-student">
       <block wx:for="{{background}}" wx:key="*this">
-        <view class="swiper-courses">
-          <image class="img-courses" src="{{'../../assets/images/'+item}}" mode="cover"></image>
-          <view class="">
+        <view class="student-item">
+          <image class="img-student" src="{{'../../assets/images/'+item}}" mode="cover"></image>
+          <view class="student-title">
             <text class="">{{coursesName[index]}}</text>
           </view>
         </view>
@@ -100,17 +100,30 @@
       <view><text class="popular-english">/Hot Products</text></view>
     </view>
     <view class="popular-products">
-      <image class="img-introduction" src="../../assets/images/store_introduction@2x.png" mode="cover"></image>
-      <view class="introduction-text">
-        <text></text>
-      </view>
+      <block wx:for="{{background}}" wx:key="*this">
+        <view class="swiper-products">
+          <image class="img-products" src="{{'../../assets/images/'+item}}" mode="cover"></image>
+          <view class="products-title">
+            <text class="">雅马哈吉他fg800单板民谣木电箱初学者</text>
+          </view>
+          <view class="products-price">
+            <text class="price-icon">￥</text><text class="price">13800.00</text>
+          </view>
+        </view>
+      </block>
     </view>
   </view>
-  <view class="popular-courses">
-    <view class="introduction-body">
-      <image class="img-introduction" src="../../assets/images/store_introduction@2x.png" mode="cover"></image>
-      <view class="introduction-text">
-        <text></text>
+  <view class="popular-bottom">
+    <image class="img-bottom" src="../../assets/images/underbackground@2x.png" mode="cover"></image>
+    <view class="introduction-bottom">
+      <image class="img-logo" src="../../assets/images/logo@2x.png" mode="cover"></image>
+      <view class="bottom-text">
+        <view>
+          <text>地址：{{'罗森音乐琴行'}}</text>
+        </view>
+        <view>
+          <text>联系方式：{{'15598034397'}}</text>
+        </view>
       </view>
     </view>
   </view>
