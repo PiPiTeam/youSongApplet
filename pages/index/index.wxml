@@ -8,7 +8,7 @@
         <block wx:for="{{background}}" wx:key="*this">
           <swiper-item>
             <view>
-              <image class="img-banner" src="{{'../../assets/images/'+item}}" mode="cover"></image>
+              <image class="img-banner" src="{{ imgBaseUrl + item.path + item.name }}" mode="cover"></image>
             </view>
           </swiper-item>
         </block>

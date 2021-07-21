@@ -10,6 +10,8 @@ Page({
     }
   },
   data: {
+    imgBaseUrl: '//118.195.176.248:8001/static/',
+    storeId: '7',
     motto: 'Hello World',
     userInfo: {},
     hasUserInfo: false,
@@ -33,11 +35,45 @@ Page({
     })
   },
   onLoad() {
+    const _this = this
     if (wx.getUserProfile) {
       this.setData({
         canIUseGetUserProfile: true
       })
     }
+    // 请求banner
+    wx.request({
+      url: 'http://118.195.176.248:8002/store/7/banner/list',
+      method: 'GET',
+      data: {},
+      header: {
+        'Accept': 'application/json'
+      },
+      success: function(res) {
+        const resp = res.data
+        _this.setData({
+          background: resp.data
+        })
+      }
+    })
+
+    // 请求学员
+    wx.request({
+      url: 'http://118.195.176.248:8002/style/student/page-list',
+      method: 'GET',
+      data: {
+        current: 1,
+        size: 4
+      },
+      header: {
+        'Accept': 'application/json'
+      },
+      success: function(res) {
+        const resp = res.data
+        console.log('学员', resp.data)
+        
+      }
+    })
   },
   getUserProfile(e) {
     // 推荐使用wx.getUserProfile获取用户信息，开发者每次通过该接口获取用户个人信息均需用户确认，开发者妥善保管用户快速填写的头像昵称，避免重复弹窗
