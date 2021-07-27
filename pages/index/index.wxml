@@ -22,7 +22,7 @@
       <view><text class="popular-english">/Popular Courses</text></view>
     </view>
     <view class="popular-scroll">
-      <swiper display-multiple-items="3">
+      <swiper display-multiple-items="3.5">
         <block wx:for="{{coursesBanner}}" wx:key="*this">
           <swiper-item>
             <view class="swiper-courses">
@@ -85,7 +85,7 @@
     <view class="popular-student">
       <block wx:for="{{background}}" wx:key="*this">
         <view class="student-item">
-          <image class="img-student" src="{{'../../assets/images/'+item}}" mode="cover"></image>
+          <image class="img-student" src="{{imgBaseUrl + item.path + item.name}}" mode="cover"></image>
           <view class="student-title">
             <text class="">{{coursesName[index]}}</text>
           </view>
@@ -93,7 +93,7 @@
       </block>
     </view>
   </view>
-  <view class="popular-courses popular-introduction">
+  <view class="popular-courses popular-introduction padding300">
     <view class="popular-title">
       <view class="popular-border"></view>
       <view><text class="popular-chian">热销产品</text></view>
@@ -102,7 +102,7 @@
     <view class="popular-products">
       <block wx:for="{{background}}" wx:key="*this">
         <view class="swiper-products">
-          <image class="img-products" src="{{'../../assets/images/'+item}}" mode="cover"></image>
+          <image class="img-products" src="{{imgBaseUrl + item.path + item.name}}" mode="cover"></image>
           <view class="products-title">
             <text class="">雅马哈吉他fg800单板民谣木电箱初学者</text>
           </view>
