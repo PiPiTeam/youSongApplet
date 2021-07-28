@@ -1,6 +1,7 @@
 /**index.wxss**/
 .page-body{
   background-color: rgb(247, 247, 247);
+  padding-bottom: 180rpx;
 }
 .page-head{
   width: 100%;
@@ -18,10 +19,13 @@
 }
 .swiper-item{
   height: 318rpx;
+  border-radius: 8px;
+  overflow: hidden;
 }
 .img-banner{
   width: 670rpx;
   height: 320rpx;
+  border-radius: 8px;
 }
 .popular-courses{
   padding: 0 40rpx;
@@ -61,12 +65,12 @@
 
 .popular-scroll{
   width: 100%;
-  height: 280rpx;
+  height: 270rpx;
   margin-top: 20rpx;
 }
 .swiper-courses{
-  width: 196rpx;
-  height: 250rpx;
+  width: 180rpx;
+  height: 230rpx;
   border-radius: 8px;
   background: #ffffff;
   box-shadow: 0px 4rpx 14rpx rgba(0,0,0,0.06);
@@ -154,12 +158,14 @@
 .student-item{
   width: 320rpx;
   height: 200rpx;
-  margin: 0 5rpx;
+  margin: 5rpx;
   position: relative;
+  border-radius: 16rpx;
+  overflow: hidden;
 }
 .img-student{
   width: 100%;
-  height: 200rpx;
+  height: 318rpx;
 }
 .student-title{
   background-color: rgba(0,0,0,0.5);
@@ -168,12 +174,14 @@
   align-items: center;
   text-align: center;
   position: absolute;
-  bottom: 8rpx;
-  width: 306rpx;
-  margin: 0rpx 6rpx;
+  bottom: 0rpx;
+  width: 100%;
   line-height: 60rpx;
   height: 60rpx;
   font-size: 24rpx;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 .popular-products{
   display: flex;
@@ -211,7 +219,8 @@
 .popular-bottom{
   width: 100%;
   height: 160rpx;
-  position: relative;
+  position: fixed;
+  bottom: 0;
 }
 .img-bottom{
   width: 100%;
@@ -229,4 +238,7 @@
 .img-logo{
   width: 320rpx;
   height: 70rpx;
+}
+.padding300 {
+  padding-bottom: 300rpx;
 }

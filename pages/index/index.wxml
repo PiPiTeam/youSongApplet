@@ -22,7 +22,7 @@
       <view><text class="popular-english">/Popular Courses</text></view>
     </view>
     <view class="popular-scroll">
-      <swiper display-multiple-items="3">
+      <swiper display-multiple-items="3.5">
         <block wx:for="{{coursesBanner}}" wx:key="*this">
           <swiper-item>
             <view class="swiper-courses">
@@ -70,9 +70,18 @@
       <view><text class="popular-english">/Store Introduction</text></view>
     </view>
     <view class="introduction-body">
-      <image class="img-introduction" src="../../assets/images/store_introduction@2x.png" mode="cover"></image>
+      <!-- <image class="img-introduction" src="../../assets/images/store_introduction@2x.png" mode="cover"></image> -->
+      <swiper class="img-introduction" indicator-dots="{{false}}" circular	display-multiple-items="1" indicator-active-color="#FFC892" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+        <block wx:for="{{storeInfo.imgFileList}}" wx:key="*this">
+          <swiper-item>
+            <view>
+              <image class="img-introduction" src="{{ imgBaseUrl + item.path + item.name }}" mode="cover"></image>
+            </view>
+          </swiper-item>
+        </block>
+          </swiper>
       <view class="introduction-text">
-        <text>国家一级技师琴行，由曾获钢琴家和CCTV邀请赴维也纳金色大厅和纽约的江伟先生创办，直达工厂挑选好琴，销售雅马哈、卡瓦依、珠江、哈曼尼、首德、洛尔菲等品牌，并有租琴调琴学琴等音乐培训。音悦家琴行是弗朗茨·李斯特国际青少年钢琴比赛、《爸爸去哪儿》系列活动、马克西姆及肯尼基巡演、央视《朗读者》节目的协助单位，也是全国50多个音乐厅的技师支持单位。</text>
+        <text>{{ storeInfo.content }}</text>
       </view>
     </view>
   </view>
@@ -83,28 +92,44 @@
       <view><text class="popular-english">/Student Style</text></view>
     </view>
     <view class="popular-student">
-      <block wx:for="{{background}}" wx:key="*this">
+      <block wx:for="{{studentList}}" wx:key="*this">
         <view class="student-item">
-          <image class="img-student" src="{{'../../assets/images/'+item}}" mode="cover"></image>
+          <swiper class="swiper-item" indicator-dots="{{indicatorDots}}" circular	display-multiple-items="1" indicator-active-color="#FFC892" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+        <block wx:for="{{item.imgFileList}}" wx:key="*this" wx:for-item="stuItem">
+          <swiper-item>
+            <view>
+              <image class="img-student" src="{{ imgBaseUrl + stuItem.path + stuItem.name }}" mode="cover"></image>
+            </view>
+          </swiper-item>
+        </block>
+          </swiper>
           <view class="student-title">
-            <text class="">{{coursesName[index]}}</text>
+            <text class="">{{item.content}}</text>
           </view>
         </view>
       </block>
     </view>
   </view>
-  <view class="popular-courses popular-introduction">
+  <view class="popular-courses popular-introduction padding300">
     <view class="popular-title">
       <view class="popular-border"></view>
       <view><text class="popular-chian">热销产品</text></view>
       <view><text class="popular-english">/Hot Products</text></view>
     </view>
     <view class="popular-products">
-      <block wx:for="{{background}}" wx:key="*this">
+      <block wx:for="{{productList}}" wx:key="*this">
         <view class="swiper-products">
-          <image class="img-products" src="{{'../../assets/images/'+item}}" mode="cover"></image>
+          <swiper class="" indicator-dots="{{false}}" circular	display-multiple-items="1" indicator-active-color="#FFC892" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+        <block wx:for="{{item.imgFileList}}" wx:key="*this" wx:for-item="prodItem">
+          <swiper-item>
+            <view>
+              <image class="img-student" src="{{ imgBaseUrl + prodItem.path + prodItem.name }}" mode="cover"></image>
+            </view>
+          </swiper-item>
+        </block>
+          </swiper>
           <view class="products-title">
-            <text class="">雅马哈吉他fg800单板民谣木电箱初学者</text>
+            <text class="">{{ item.title }}</text>
           </view>
           <view class="products-price">
             <text class="price-icon">￥</text><text class="price">13800.00</text>
