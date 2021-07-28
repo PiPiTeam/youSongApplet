@@ -12,13 +12,14 @@ Page({
   data: {
     imgBaseUrl: '//118.195.176.248:8001/static/',
     storeId: '7',
-    motto: 'Hello World',
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     canIUseGetUserProfile: false,
     canIUseOpenData: wx.canIUse('open-data.type.userAvatarUrl') && wx.canIUse('open-data.type.userNickName'), // 如需尝试获取用户信息可改为false
-    background: ['banner@2x.png', 'banner@2x.png',],
+    background: [],
+    studentList: [],
+    productList: [],
     events:['activity1@2x.png', 'activity2@2x.png', 'activity3@2x.png'],
     coursesBanner: ['guitar@2x.png','piano@2x.png','sachs@2x.png', 'violin@2x.png','drum_kit@2x.png', 'guzheng@2x.png', 'africandrum@2x.png', 'pop_vocal@2x.png', 'ukulele@2x.png',],
     coursesName: ['吉他课程', '钢琴课程', '萨克斯课程', '小提琴课程', '架子鼓课程', '古筝课程', '非洲鼓课程', '流行声乐课程', '尤克里里课程' ],
@@ -57,11 +58,12 @@ Page({
       }
     })
 
-    // 请求学员
+    // 学员
     wx.request({
       url: 'http://118.195.176.248:8002/style/student/page-list',
       method: 'GET',
       data: {
+        storeId: _this.data.storeId,
         current: 1,
         size: 4
       },
@@ -70,8 +72,29 @@ Page({
       },
       success: function(res) {
         const resp = res.data
-        console.log('学员', resp.data)
-        
+        _this.setData({
+          studentList: resp.data.records
+        })
+      }
+    })
+
+    // 产品
+    wx.request({
+      url: 'http://118.195.176.248:8002/product/page-list',
+      method: 'GET',
+      data: {
+        storeId: _this.data.storeId,
+        current: 1,
+        size: 4
+      },
+      header: {
+        'Accept': 'application/json'
+      },
+      success: function(res) {
+        const resp = res.data
+        _this.setData({
+          productList: resp.data.records
+        })
       }
     })
   },

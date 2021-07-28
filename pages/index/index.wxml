@@ -83,11 +83,19 @@
       <view><text class="popular-english">/Student Style</text></view>
     </view>
     <view class="popular-student">
-      <block wx:for="{{background}}" wx:key="*this">
+      <block wx:for="{{studentList}}" wx:key="*this">
         <view class="student-item">
-          <image class="img-student" src="{{imgBaseUrl + item.path + item.name}}" mode="cover"></image>
+          <swiper class="swiper-item" indicator-dots="{{indicatorDots}}" circular	display-multiple-items="1" indicator-active-color="#FFC892" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+        <block wx:for="{{item.imgFileList}}" wx:key="*this" wx:for-item="stuItem">
+          <swiper-item>
+            <view>
+              <image class="img-student" src="{{ imgBaseUrl + stuItem.path + stuItem.name }}" mode="cover"></image>
+            </view>
+          </swiper-item>
+        </block>
+          </swiper>
           <view class="student-title">
-            <text class="">{{coursesName[index]}}</text>
+            <text class="">{{item.content}}</text>
           </view>
         </view>
       </block>
@@ -100,9 +108,18 @@
       <view><text class="popular-english">/Hot Products</text></view>
     </view>
     <view class="popular-products">
-      <block wx:for="{{background}}" wx:key="*this">
+      <block wx:for="{{productList}}" wx:key="*this">
         <view class="swiper-products">
-          <image class="img-products" src="{{imgBaseUrl + item.path + item.name}}" mode="cover"></image>
+          <!-- <image class="img-products" src="{{imgBaseUrl + item.path + item.name}}" mode="cover"></image> -->
+          <swiper class="swiper-item" indicator-dots="{{false}}" circular	display-multiple-items="1" indicator-active-color="#FFC892" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+        <block wx:for="{{item.imgFileList}}" wx:key="*this" wx:for-item="prodItem">
+          <swiper-item>
+            <view>
+              <image class="img-student" src="{{ imgBaseUrl + prodItem.path + prodItem.name }}" mode="cover"></image>
+            </view>
+          </swiper-item>
+        </block>
+          </swiper>
           <view class="products-title">
             <text class="">雅马哈吉他fg800单板民谣木电箱初学者</text>
           </view>

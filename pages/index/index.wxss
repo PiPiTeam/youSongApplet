@@ -179,6 +179,9 @@
   line-height: 60rpx;
   height: 60rpx;
   font-size: 24rpx;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 .popular-products{
   display: flex;
