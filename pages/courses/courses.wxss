@@ -1,5 +1,17 @@
 /* pages/courses/courses.wxss */
 .head-courses{
   height: 200rpx;
+  display: flex;
+  width: 100%;
+}
+.img-courses{
+  height: 200rpx;
   width: 20%;
+}
+.courses-swiper{
+  width: 76%;
+  height: 200rpx;
+}
+.swiper-item{
+  height: 200rpx;
 }

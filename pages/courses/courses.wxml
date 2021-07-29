@@ -1,17 +1,19 @@
 <!--pages/courses/courses.wxml-->
 <view class="page-courses">
-  <image class="head-courses" src="../../assets/images/banner_background@2x.png" mode="bottom" lazy-load="true"></image>
-  <view class="page-swiper">
-    <swiper class="swiper-item" indicator-dots="{{indicatorDots}}" circular	display-multiple-items="1"
-      indicator-active-color="#FFC892" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
-      <block wx:for="{{events}}" wx:key="*this">
-        <swiper-item>
-          <view>
-            <image class="img-banner" src="{{ '../../assets/images/' + item }}" mode="cover"></image>
-          </view>
-        </swiper-item>
-      </block>
-    </swiper>
+  <view class="head-courses">
+    <image class="img-courses" src="../../assets/images/banner_background@2x.png" mode="bottom" lazy-load="true"></image>
+    <view class="courses-swiper">
+      <swiper class="swiper-item" indicator-dots="{{indicatorDots}}" circular	display-multiple-items="1"
+        indicator-active-color="#FFC892" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+        <block wx:for="{{events}}" wx:key="*this">
+          <swiper-item>
+            <view>
+              <image class="img-banner" src="{{ '../../assets/images/' + item }}" mode="cover"></image>
+            </view>
+          </swiper-item>
+        </block>
+      </swiper>
+    </view>
   </view>
   <view class="">
     
