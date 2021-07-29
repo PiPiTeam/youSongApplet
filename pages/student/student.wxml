@@ -1,2 +1,18 @@
 <!--pages/student/student.wxml-->
-<text>pages/student/student.wxml</text>
+<view class="student-body">
+  <!-- 如果有视频链接，显示视频 -->
+  <swiper class="swiper-item" indicator-dots="{{indicatorDots}}" circular	display-multiple-items="1"
+    indicator-active-color="#FFC892" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+    <block wx:for="{{studentInfo.imgFileList}}" wx:key="*this">
+      <swiper-item>
+        <view>
+          <image class="img-banner" src="{{ imgBaseUrl + item.path + item.name }}" mode="cover"></image>
+        </view>
+      </swiper-item>
+    </block>
+  </swiper>
+  <!-- 名字 -->
+  <view class="student-title">{{ studentInfo.title }}</view>
+  <!-- 描述 -->
+  <view class="student-desc">{{ studentInfo.content }}</view>
+</view>
