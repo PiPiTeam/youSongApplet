@@ -1,0 +1,5 @@
+/* pages/courses/courses.wxss */
+.head-courses{
+  height: 200rpx;
+  width: 20%;
+}

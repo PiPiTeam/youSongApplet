@@ -25,7 +25,7 @@
       <swiper display-multiple-items="3.5">
         <block wx:for="{{coursesBanner}}" wx:key="*this">
           <swiper-item>
-            <view class="swiper-courses">
+            <view class="swiper-courses" bindtap="viewCourses">
               <image class="img-courses" src="{{'../../assets/images/'+item}}" mode="cover"></image>
               <view class="">
                 <text class="">{{coursesName[index]}}</text>

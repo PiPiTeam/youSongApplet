@@ -4,7 +4,8 @@
     "pages/events/events",
     "pages/event-detail/event-detail",
     "pages/student/student",
-    "pages/products/products"
+    "pages/products/products",
+    "pages/courses/courses"
   ],
   "window":{
     "backgroundTextStyle":"light",
