@@ -20,6 +20,10 @@ Page({
     background: [],
     studentList: [],
     productList: [],
+    storeInfo: {
+      content: '',
+      imgFileList: []
+    },
     events:['activity1@2x.png', 'activity2@2x.png', 'activity3@2x.png'],
     coursesBanner: ['guitar@2x.png','piano@2x.png','sachs@2x.png', 'violin@2x.png','drum_kit@2x.png', 'guzheng@2x.png', 'africandrum@2x.png', 'pop_vocal@2x.png', 'ukulele@2x.png',],
     coursesName: ['吉他课程', '钢琴课程', '萨克斯课程', '小提琴课程', '架子鼓课程', '古筝课程', '非洲鼓课程', '流行声乐课程', '尤克里里课程' ],
@@ -54,6 +58,64 @@ Page({
         const resp = res.data
         _this.setData({
           background: resp.data
+        })
+      }
+    })
+
+    // 课程
+    wx.request({
+      url: 'http://118.195.176.248:8002/course/page-list',
+      method: 'GET',
+      data: {
+        storeId: _this.data.storeId,
+        current: 1,
+        size: 100
+      },
+      header: {
+        'Accept': 'application/json'
+      },
+      success: function(res) {
+        const resp = res.data
+        console.log(resp)
+        // _this.setData({
+        //   background: resp.data
+        // })
+      }
+    })
+
+    // 活动
+    wx.request({
+      url: 'http://118.195.176.248:8002/activity/page-list',
+      method: 'GET',
+      data: {
+        storeId: _this.data.storeId,
+        current: 1,
+        size: 3
+      },
+      header: {
+        'Accept': 'application/json'
+      },
+      success: function(res) {
+        const resp = res.data
+        console.log(resp)
+        // _this.setData({
+        //   background: resp.data
+        // })
+      }
+    })
+
+    // 本店介绍
+    wx.request({
+      url: `http://118.195.176.248:8002/store/${_this.data.storeId}/intro`,
+      method: 'GET',
+      data: {},
+      header: {
+        'Accept': 'application/json'
+      },
+      success: function(res) {
+        const resp = res.data
+        _this.setData({
+          storeInfo: resp.data
         })
       }
     })
