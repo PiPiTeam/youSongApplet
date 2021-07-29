@@ -5,7 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    events:['activity1@2x.png', 'activity2@2x.png', 'activity3@2x.png','activity1@2x.png', 'activity2@2x.png', 'activity3@2x.png'],
+    coursesName: ['吉他课程', '钢琴课程', '萨克斯课程', '小提琴课程', '架子鼓课程', '古筝课程', '非洲鼓课程', '流行声乐课程', '尤克里里课程' ],
   },
 
   /**

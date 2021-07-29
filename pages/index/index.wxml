@@ -43,7 +43,7 @@
         <view><text class="popular-chian">最新活动</text></view>
         <view><text class="popular-english">/Latest Events</text></view>
       </view>
-      <view><text class="popular-english popular-more">查看更多 ></text></view>
+      <view><text class="popular-english popular-more" bindtap="goAvtiveList">查看更多 ></text></view>
     </view>
     <view class="popular-scroll">
       <block wx:for="{{events}}" wx:key="*this">

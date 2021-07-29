@@ -1,7 +1,6 @@
 /**index.wxss**/
 .page-body{
   background-color: rgb(247, 247, 247);
-  padding-bottom: 180rpx;
 }
 .page-head{
   width: 100%;
@@ -187,11 +186,10 @@
   display: flex;
   flex-wrap: wrap;
   margin: 20rpx 0;
-  min-height: 502rpx;
 }
 .swiper-products{
   width: 320rpx;
-  height: 502rpx;
+  height: 420rpx;
   margin: 0 5rpx;
 }
 .img-products{

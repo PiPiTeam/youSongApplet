@@ -1,12 +1,13 @@
 /* pages/student/student.wxss */
 .student-body{
   background-color: rgb(247, 247, 247);
+  padding: 0 40rpx;
 }
 .swiper-item{
   height: 318rpx;
   border-radius: 8rpx;
   overflow: hidden;
-  margin: 20rpx 20rpx 0;
+  margin-top: 40rpx;
 }
 .img-banner{
   width: 100%;
