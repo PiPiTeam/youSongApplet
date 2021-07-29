@@ -1,6 +1,5 @@
 /* pages/student/student.wxss */
 .student-body{
-  background-color: rgb(247, 247, 247);
   padding: 0 40rpx;
 }
 .swiper-item{

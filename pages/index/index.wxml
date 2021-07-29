@@ -47,17 +47,17 @@
     </view>
     <view class="popular-scroll">
       <block wx:for="{{events}}" wx:key="*this">
-        <view class="swiper-courses popular-events">
-          <image class="img-events" src="{{'../../assets/images/'+item}}" mode="cover"></image>
+        <view class="swiper-courses popular-events" data-id="{{item.id}}" bindtap="goEventDetail">
+          <image class="img-events" src="{{item.image}}" mode="cover"></image>
           <view class="events-right">
             <view class="events-title">
               <view class="events-header">
-                <view><text>{{coursesName[index]}}</text></view>
+                <view class="title-txt"><text>{{item.title}}</text></view>
                 <image class="events-tag" src="../../assets/images/new@2x.png" mode="cover"></image>
               </view>
-              <view class="events-time"><text>{{coursesName[index]}}</text></view>
+              <view class="events-time"><text>{{item.updateTime}}</text></view>
             </view>
-            <view class="events-text"><text class="">{{coursesName[index]}}如果有真才艺，就自己为自己赢取深造机会，罗森音乐琴行为你们提供竞艺平台，也为你们提供免费深造的机会。</text></view>
+            <view class="events-text"><text class="">{{item.brief}}</text></view>
           </view>
         </view>
       </block>
@@ -86,11 +86,14 @@
     </view>
   </view>
   <view class="popular-courses popular-students">
-    <view class="popular-title">
-      <view class="popular-border"></view>
-      <view><text class="popular-chian">学员风采</text></view>
-      <view><text class="popular-english">/Student Style</text></view>
-    </view>
+    <view class="popular-active">
+      <view class="popular-title">
+        <view class="popular-border"></view>
+        <view><text class="popular-chian">学员风采</text></view>
+        <view><text class="popular-english">/Student Style</text></view>
+      </view>
+      <view><text class="popular-english popular-more">查看更多 ></text></view>
+  </view>
     <view class="popular-student">
       <block wx:for="{{studentList}}" wx:key="*this">
         <view class="student-item" data-id="{{ item.id }}" bindtap="goStudent">
@@ -111,14 +114,17 @@
     </view>
   </view>
   <view class="popular-courses popular-introduction padding300">
-    <view class="popular-title">
-      <view class="popular-border"></view>
-      <view><text class="popular-chian">热销产品</text></view>
-      <view><text class="popular-english">/Hot Products</text></view>
+    <view class="popular-active">
+      <view class="popular-title">
+        <view class="popular-border"></view>
+        <view><text class="popular-chian">热销产品</text></view>
+        <view><text class="popular-english">/Hot Products</text></view>
+      </view>
+      <view><text class="popular-english popular-more">查看更多 ></text></view>
     </view>
     <view class="popular-products">
       <block wx:for="{{productList}}" wx:key="*this">
-        <view class="swiper-products">
+        <view class="swiper-products" data-id="{{ item.id }}" bindtap="goProductDetail">
           <swiper class="" indicator-dots="{{false}}" circular	display-multiple-items="1" indicator-active-color="#FFC892" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
         <block wx:for="{{item.imgFileList}}" wx:key="*this" wx:for-item="prodItem">
           <swiper-item>
@@ -132,7 +138,7 @@
             <text class="">{{ item.title }}</text>
           </view>
           <view class="products-price">
-            <text class="price-icon">￥</text><text class="price">13800.00</text>
+            <text class="price-icon">￥</text><text class="price">{{ item.discountPrice }}</text>
           </view>
         </view>
       </block>

@@ -11,7 +11,9 @@ Page({
     vertical: false,
     autoplay: true,
     interval: 2000,
-    duration: 500
+    duration: 500,
+    showPhone: false,
+    phone: ''
   },
 
   /**
@@ -68,5 +70,23 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  userInfoHandler(e) {
+    console.log(e)
+  },
+  getPhoneNumber(e) {
+    console.log(e.detail.errMsg)
+    console.log(e.detail.iv)
+    console.log(e.detail.encryptedData)
+  },
+  showPhoneInput() {
+    this.setData({
+      showPhone: true
+    })
+  },
+  bindPhoneInput(e) {
+    this.setData({
+      phone: e.detail.value
+    })
   }
 })

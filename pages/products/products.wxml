@@ -1,2 +1,21 @@
 <!--pages/products/products.wxml-->
-<text>pages/products/products.wxml</text>
+<view class="products-body">
+  <swiper class="swiper-item" indicator-dots="{{indicatorDots}}" circular	display-multiple-items="1"
+    indicator-active-color="#FFC892" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+    <block wx:for="{{activeInfo.imgFileList}}" wx:key="*this">
+      <swiper-item>
+        <view>
+          <image class="img-banner" src="{{ imgBaseUrl + item.path + item.name }}" mode="cover"></image>
+        </view>
+      </swiper-item>
+    </block>
+  </swiper>
+  <!-- 名字 -->
+  <view class="student-title">{{ activeInfo.title }}</view>
+  <!-- 描述 -->
+  <view class="student-desc">{{ activeInfo.content }}</view>
+  <view class="btn-row">
+    <!-- <button class="btn" type="primary" plain="true" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">感兴趣</button> -->
+    <button class="btn" type="primary" plain="true">感兴趣</button>
+  </view>
+</view>

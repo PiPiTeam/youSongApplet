@@ -1,5 +1,5 @@
 <!--pages/courses/courses.wxml-->
-<view class="page-courses">
+<view class="courses-courses">
   <view class="head-courses">
     <image class="img-courses" src="../../assets/images/banner_background@2x.png" mode="bottom" lazy-load="true"></image>
     <view class="courses-swiper">
@@ -15,7 +15,14 @@
       </swiper>
     </view>
   </view>
-  <view class="">
-    
+  <view class="title">宋老师的钢琴课程</view>
+  <view class="content">钢琴课程钢琴课程钢琴课程钢琴课程钢琴课程钢琴课程钢琴课程钢琴课程钢琴课程钢琴课程钢琴课程钢琴课程钢琴课程钢琴课程钢琴课程钢琴课程</view>
+  <view class="btn-row">
+    <!-- <button class="btn" type="primary" plain="true" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">感兴趣</button> -->
+    <button class="btn" type="primary" plain="true" bindtap="showPhoneInput">感兴趣</button>
+  </view>
+  <view class="get-phone-row" wx:if="{{ showPhone }}">
+    <input type="number" maxlength="11" auto-focus bindinput="bindPhoneInput" placeholder="请输入您的联系电话" />
+    <button class="submit-phone" type="primary" plain="true" bindtap="showPhoneInput">确定</button>
   </view>
 </view>

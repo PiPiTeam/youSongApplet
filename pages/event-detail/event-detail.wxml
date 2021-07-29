@@ -1,2 +1,5 @@
 <!--pages/event-detail/event-detail.wxml-->
-<text>pages/event-detail/event-detail.wxml</text>
+<view class="event-detail-body">
+  <rich-text nodes="{{htmlSnip}}"></rich-text>
+</view>
+

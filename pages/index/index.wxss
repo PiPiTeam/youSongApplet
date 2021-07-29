@@ -64,7 +64,6 @@
 
 .popular-scroll{
   width: 100%;
-  height: 270rpx;
   margin-top: 20rpx;
 }
 .swiper-courses{
@@ -88,9 +87,6 @@
 }
 .popular-more{
   color: #BDBDBD;
-}
-.popular-event{
-  height: 890rpx;
 }
 .popular-events{
   width: 100%;
@@ -120,6 +116,12 @@
   display: flex;
   color: #2A2B2D;
   font-size: 32rpx;
+}
+.title-txt {
+  max-width: 160rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 .events-tag{
   width: 64rpx;
@@ -189,7 +191,7 @@
 }
 .swiper-products{
   width: 320rpx;
-  height: 420rpx;
+  height: 440rpx;
   margin: 0 5rpx;
 }
 .img-products{
@@ -205,6 +207,7 @@
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   margin: 10rpx;
+  height: 70rpx;
 }
 .products-price{
   color: #FFA042;
@@ -238,5 +241,5 @@
   height: 70rpx;
 }
 .padding300 {
-  padding-bottom: 300rpx;
+  padding-bottom: 360rpx;
 }

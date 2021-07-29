@@ -1,17 +1,18 @@
 {
-  "pages":[
+  "pages": [
     "pages/index/index",
     "pages/events/events",
     "pages/event-detail/event-detail",
     "pages/student/student",
     "pages/products/products",
-    "pages/courses/courses"
+    "pages/courses/courses",
+    "pages/courses-list/courses-list"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#2a2b2d",
     "navigationBarTitleText": "罗森音乐琴行",
-    "navigationBarTextStyle":"white"
+    "navigationBarTextStyle": "white"
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json"

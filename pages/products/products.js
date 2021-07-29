@@ -5,14 +5,40 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    imgBaseUrl: '//118.195.176.248:8001/static/',
+    storeId: '7',
+    indicatorDots: true,
+    vertical: false,
+    autoplay: true,
+    interval: 2000,
+    duration: 500,
+    id: '',
+    activeInfo: {}
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    const _this = this
+    this.setData({id: options.id})
+    // 产品详情
+    wx.request({
+      url: `http://118.195.176.248:8002/product/${_this.data.id}`,
+      method: 'GET',
+      data: {},
+      header: {
+        'Accept': 'application/json'
+      },
+      success: function(res) {
+        const resp = res.data
+        const indicatorDots = resp.data.imgFileList.length > 1 ? true : false
+        _this.setData({
+          activeInfo: resp.data,
+          indicatorDots: indicatorDots
+        })
+      }
+    })
   },
 
   /**

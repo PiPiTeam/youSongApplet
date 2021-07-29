@@ -20,11 +20,12 @@ Page({
     background: [],
     studentList: [],
     productList: [],
+    coursesList: [],
     storeInfo: {
       content: '',
       imgFileList: []
     },
-    events:['activity1@2x.png', 'activity2@2x.png', 'activity3@2x.png'],
+    events:[],
     coursesBanner: ['guitar@2x.png','piano@2x.png','sachs@2x.png', 'violin@2x.png','drum_kit@2x.png', 'guzheng@2x.png', 'africandrum@2x.png', 'pop_vocal@2x.png', 'ukulele@2x.png',],
     coursesName: ['吉他课程', '钢琴课程', '萨克斯课程', '小提琴课程', '架子鼓课程', '古筝课程', '非洲鼓课程', '流行声乐课程', '尤克里里课程' ],
     indicatorDots: true,
@@ -76,10 +77,9 @@ Page({
       },
       success: function(res) {
         const resp = res.data
-        console.log(resp)
-        // _this.setData({
-        //   background: resp.data
-        // })
+        _this.setData({
+          coursesList: resp.data.records
+        })
       }
     })
 
@@ -97,10 +97,9 @@ Page({
       },
       success: function(res) {
         const resp = res.data
-        console.log(resp)
-        // _this.setData({
-        //   background: resp.data
-        // })
+        _this.setData({
+          events: resp.data.records
+        })
       }
     })
 
@@ -179,9 +178,8 @@ Page({
     wx.navigateTo({ url: url})
   },
   viewCourses(e){
-    console.log(123333)
     const id = e.currentTarget.dataset.id || ''
-    const url = '/pages/courses/courses?id='+id
+    const url = '/pages/courses-list/courses-list?id='+id
     wx.navigateTo({ url: url})
   },
   goAvtiveList() {
@@ -194,5 +192,15 @@ Page({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
     })
+  },
+  goEventDetail(e) {
+    const id = e.currentTarget.dataset.id || ''
+    const url = '/pages/event-detail/event-detail?id='+id
+    wx.navigateTo({ url: url})
+  },
+  goProductDetail(e) {
+    const id = e.currentTarget.dataset.id || ''
+    const url = '/pages/products/products?id='+id
+    wx.navigateTo({ url: url})
   }
 })

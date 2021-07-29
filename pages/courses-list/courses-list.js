@@ -1,43 +1,18 @@
-// pages/event-detail/event-detail.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    imgBaseUrl: '//118.195.176.248:8001/static/',
-    storeId: '7',
-    indicatorDots: true,
-    vertical: false,
-    autoplay: true,
-    interval: 2000,
-    duration: 500,
-    id: '',
-    htmlSnip: ''
+    coursesList:['activity1@2x.png', 'activity2@2x.png', 'activity3@2x.png','activity1@2x.png', 'activity2@2x.png', 'activity3@2x.png'],
+    coursesName: ['吉他课程', '钢琴课程', '萨克斯课程', '小提琴课程', '架子鼓课程', '古筝课程', '非洲鼓课程', '流行声乐课程', '尤克里里课程' ],
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    const _this = this
-    this.setData({id: options.id})
-    // 活动详情
-    wx.request({
-      url: `http://118.195.176.248:8002/activity/${_this.data.id}`,
-      method: 'GET',
-      data: {},
-      header: {
-        'Accept': 'application/json'
-      },
-      success: function(res) {
-        const resp = res.data
-        wx.setNavigationBarTitle({
-          title: resp.data.title
-        })
-        _this.setData({htmlSnip: resp.data.content})
-      }
-    })
+
   },
 
   /**
@@ -87,5 +62,10 @@ Page({
    */
   onShareAppMessage: function () {
 
-  }
+  },
+  viewCourses(e){
+    const id = e.currentTarget.dataset.id || ''
+    const url = '/pages/courses/courses?id='+id
+    wx.navigateTo({ url: url})
+  },
 })
