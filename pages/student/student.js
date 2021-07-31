@@ -21,7 +21,13 @@ Page({
    */
   onLoad: function (options) {
     const _this = this
-    this.setData({id: options.id})
+    this.setData({
+      id: options.id,
+      title: options.title
+    })
+    wx.setNavigationBarTitle({
+      title: options.title
+    })
     // 学员详情
     wx.request({
       url: `http://118.195.176.248:8002/style/student/${_this.data.id}`,

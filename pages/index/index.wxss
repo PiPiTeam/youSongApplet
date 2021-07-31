@@ -152,9 +152,7 @@
   color: #666;
   font-size: 28rpx;
 }
-.popular-students{
-  height: 500rpx;
-}
+
 .popular-student{
   display: flex;
   flex-wrap: wrap;

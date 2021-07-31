@@ -1,11 +1,9 @@
 /* pages/courses-list/courses-list.wxss */
 .courses-list {
-  padding: 40rpx 40rpx 0;
+  padding: 0;
 }
 .popular-scroll{
   width: 100%;
-  height: 270rpx;
-  margin-top: 20rpx;
 }
 .swiper-courses{
   width: 180rpx;
@@ -33,12 +31,13 @@
   height: 890rpx;
 }
 .popular-events{
-  width: 100%;
+  width: calc(100% - 40rpx);
   height: 256rpx;
   display: flex;
   flex-direction: row;
-  margin-bottom: 20rpx;
+  margin: 20rpx;
   padding: 0;
+  justify-content: space-between;
 }
 .img-events{
   width: 200rpx;

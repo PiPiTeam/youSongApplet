@@ -8,7 +8,7 @@
         <block wx:for="{{background}}" wx:key="*this">
           <swiper-item>
             <view>
-              <image class="img-banner" src="{{ imgBaseUrl + item.path + item.name }}" mode="cover"></image>
+              <image class="img-banner" src="{{ imgBaseUrl + item.path + item.name }}" data-src="{{ imgBaseUrl + item.path + item.name }}" mode="widthFix" bindtap="preview"></image>
             </view>
           </swiper-item>
         </block>
@@ -25,10 +25,10 @@
       <swiper display-multiple-items="3.5">
         <block wx:for="{{coursesBanner}}" wx:key="*this">
           <swiper-item>
-            <view class="swiper-courses" bindtap="viewCourses">
-              <image class="img-courses" src="{{'../../assets/images/'+item}}" mode="cover"></image>
+            <view class="swiper-courses" bindtap="viewCourses" data-id="{{item.id}}" data-num="{{item.courserNum}}" data-name="{{item.name}}">
+              <image class="img-courses" src="{{imgBaseUrl + item.coverImage}}" mode="aspectFit"></image>
               <view class="">
-                <text class="">{{coursesName[index]}}</text>
+                <text class="">{{item.name}}</text>
               </view>
             </view>
           </swiper-item>
@@ -48,12 +48,12 @@
     <view class="popular-scroll">
       <block wx:for="{{events}}" wx:key="*this">
         <view class="swiper-courses popular-events" data-id="{{item.id}}" bindtap="goEventDetail">
-          <image class="img-events" src="{{item.image}}" mode="cover"></image>
+          <image class="img-events" src="{{item.image}}" mode="aspectFill"></image>
           <view class="events-right">
             <view class="events-title">
               <view class="events-header">
                 <view class="title-txt"><text>{{item.title}}</text></view>
-                <image class="events-tag" src="../../assets/images/new@2x.png" mode="cover"></image>
+                <image class="events-tag" src="../../assets/images/new@2x.png" mode="aspectFit"></image>
               </view>
               <view class="events-time"><text>{{item.updateTime}}</text></view>
             </view>
@@ -70,12 +70,12 @@
       <view><text class="popular-english">/Store Introduction</text></view>
     </view>
     <view class="introduction-body">
-      <!-- <image class="img-introduction" src="../../assets/images/store_introduction@2x.png" mode="cover"></image> -->
+      <!-- <image class="img-introduction" src="../../assets/images/store_introduction@2x.png" mode="aspectFit"></image> -->
       <swiper class="img-introduction" indicator-dots="{{false}}" circular	display-multiple-items="1" indicator-active-color="#FFC892" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
         <block wx:for="{{storeInfo.imgFileList}}" wx:key="*this">
           <swiper-item>
             <view>
-              <image class="img-introduction" src="{{ imgBaseUrl + item.path + item.name }}" mode="cover"></image>
+              <image class="img-introduction" src="{{ imgBaseUrl + item.path + item.name }}" data-src="{{ imgBaseUrl + item.path + item.name }}" bindtap="preview" mode="aspectFill"></image>
             </view>
           </swiper-item>
         </block>
@@ -83,6 +83,34 @@
       <view class="introduction-text">
         <text>{{ storeInfo.content }}</text>
       </view>
+    </view>
+  </view>
+  <view class="popular-courses popular-students">
+    <view class="popular-active">
+      <view class="popular-title">
+        <view class="popular-border"></view>
+        <view><text class="popular-chian">名师风采</text></view>
+        <view><text class="popular-english">/Tearch Style</text></view>
+      </view>
+      <view><text class="popular-english popular-more">查看更多 ></text></view>
+  </view>
+    <view class="popular-student">
+      <block wx:for="{{teacherList}}" wx:key="*this">
+        <view class="student-item" data-id="{{ item.id }}" data-title="{{ item.title }}" bindtap="goStudent">
+          <swiper class="swiper-item" indicator-dots="{{indicatorDots}}" circular	display-multiple-items="1" indicator-active-color="#FFC892" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+        <block wx:for="{{item.imgFileList}}" wx:key="*this" wx:for-item="stuItem">
+          <swiper-item>
+            <view>
+              <image class="img-student" src="{{ imgBaseUrl + stuItem.path + stuItem.name }}" mode="aspectFill"></image>
+            </view>
+          </swiper-item>
+        </block>
+          </swiper>
+          <view class="student-title">
+            <text class="">{{item.content}}</text>
+          </view>
+        </view>
+      </block>
     </view>
   </view>
   <view class="popular-courses popular-students">
@@ -101,7 +129,7 @@
         <block wx:for="{{item.imgFileList}}" wx:key="*this" wx:for-item="stuItem">
           <swiper-item>
             <view>
-              <image class="img-student" src="{{ imgBaseUrl + stuItem.path + stuItem.name }}" mode="cover"></image>
+              <image class="img-student" src="{{ imgBaseUrl + stuItem.path + stuItem.name }}" mode="aspectFill"></image>
             </view>
           </swiper-item>
         </block>
@@ -129,7 +157,7 @@
         <block wx:for="{{item.imgFileList}}" wx:key="*this" wx:for-item="prodItem">
           <swiper-item>
             <view class="products-img-box">
-              <image class="img-products" src="{{ imgBaseUrl + prodItem.path + prodItem.name }}" mode="cover"></image>
+              <image class="img-products" src="{{ imgBaseUrl + prodItem.path + prodItem.name }}" mode="aspectFit"></image>
             </view>
           </swiper-item>
         </block>
@@ -145,9 +173,9 @@
     </view>
   </view>
   <view class="popular-bottom">
-    <image class="img-bottom" src="../../assets/images/underbackground@2x.png" mode="cover"></image>
+    <image class="img-bottom" src="../../assets/images/underbackground@2x.png" mode="aspectFit"></image>
     <view class="introduction-bottom">
-      <image class="img-logo" src="../../assets/images/logo@2x.png" mode="cover"></image>
+      <image class="img-logo" src="../../assets/images/logo@2x.png" mode="aspectFit"></image>
       <view class="bottom-text">
         <view>
           <text>地址：{{'罗森音乐琴行'}}</text>

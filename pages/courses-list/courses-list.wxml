@@ -1,20 +1,20 @@
 <!--pages/courses-list/courses-list.wxml-->
 <view class="courses-list">
-  <view class="popular-scroll">
+  <scroll-view class="popular-scroll" scroll-y='true' style="height:{{height}}px;" bindscrolltolower='getList'>
       <block wx:for="{{coursesList}}" wx:key="*this">
-        <view class="swiper-courses popular-events" data-id="{{ index }}" bindtap="viewCourses">
-          <image class="img-events" src="{{'../../assets/images/'+item}}" mode="cover"></image>
-          <view class="events-right">
+        <view class="swiper-courses popular-events">
+          <image class="img-events" src="{{imgBaseUrl+item.imgFileList[0].path+item.imgFileList[0].name}}" data-src="{{imgBaseUrl+item.imgFileList[0].path+item.imgFileList[0].name}}" mode="aspectFill" bindtap="preview"></image>
+          <view class="events-right" data-id="{{ index }}" bindtap="viewCourses">
             <view class="events-title">
               <view class="events-header">
-                <view><text>{{coursesName[index]}}</text></view>
-                <image class="events-tag" src="../../assets/images/new@2x.png" mode="cover"></image>
+                <view><text>{{item.title}}</text></view>
+                <image class="events-tag" src="../../assets/images/new@2x.png" mode="aspectFit"></image>
               </view>
-              <view class="events-time"><text>{{coursesName[index]}}</text></view>
+              <view class="events-time"><text>{{item.updateTime}}</text></view>
             </view>
-            <view class="events-text"><text class="">{{coursesName[index]}}如果有真才艺，就自己为自己赢取深造机会，罗森音乐琴行为你们提供竞艺平台，也为你们提供免费深造的机会。</text></view>
+            <view class="events-text"><text class="">{{item.content}}</text></view>
           </view>
         </view>
       </block>
-    </view>
+    </scroll-view>
 </view>

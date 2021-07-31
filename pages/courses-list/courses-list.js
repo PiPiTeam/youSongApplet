@@ -4,15 +4,26 @@ Page({
    * 页面的初始数据
    */
   data: {
-    coursesList:['activity1@2x.png', 'activity2@2x.png', 'activity3@2x.png','activity1@2x.png', 'activity2@2x.png', 'activity3@2x.png'],
-    coursesName: ['吉他课程', '钢琴课程', '萨克斯课程', '小提琴课程', '架子鼓课程', '古筝课程', '非洲鼓课程', '流行声乐课程', '尤克里里课程' ],
+    imgBaseUrl: 'http://118.195.176.248:8001/static/',
+    coursesList:[],
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    console.log(options)
+    this.setData({
+      id: options.id,
+      title: options.name
+    })
+    wx.setNavigationBarTitle({
+      title: options.name
+    })
+    this.setData({
+      height:wx.getSystemInfoSync().windowHeight
+    })
+    this.getList()
   },
 
   /**
@@ -63,9 +74,38 @@ Page({
   onShareAppMessage: function () {
 
   },
+  getList() {
+    const _this = this
+    // 获取课程分类下的课程 (关联店铺)
+    wx.request({
+      url: 'http://118.195.176.248:8002/course/list',
+      method: 'GET',
+      data: {
+        courseSortId: _this.data.id,
+      },
+      header: {
+        'Accept': 'application/json'
+      },
+      success: function(res) {
+        const resp = res.data
+        console.log(resp.data)
+        _this.setData({
+          coursesList: resp.data
+        })
+      }
+    })
+  },
   viewCourses(e){
     const id = e.currentTarget.dataset.id || ''
     const url = '/pages/courses/courses?id='+id
     wx.navigateTo({ url: url})
   },
+  //预览图片，放大预览
+  preview(event) {
+    let currentUrl = event.currentTarget.dataset.src
+    wx.previewImage({
+      current: currentUrl, // 当前显示图片的http链接
+      urls: [currentUrl]
+    })
+  }
 })

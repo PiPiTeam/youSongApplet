@@ -5,7 +5,7 @@
     <block wx:for="{{activeInfo.imgFileList}}" wx:key="*this">
       <swiper-item>
         <view>
-          <image class="img-banner" src="{{ imgBaseUrl + item.path + item.name }}" mode="cover"></image>
+          <image mode="aspectFit" class="img-banner" src="{{ imgBaseUrl + item.path + item.name }}"></image>
         </view>
       </swiper-item>
     </block>

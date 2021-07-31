@@ -10,7 +10,7 @@ Page({
     }
   },
   data: {
-    imgBaseUrl: '//118.195.176.248:8001/static/',
+    imgBaseUrl: 'http://118.195.176.248:8001/static/',
     storeId: '7',
     userInfo: {},
     hasUserInfo: false,
@@ -19,6 +19,7 @@ Page({
     canIUseOpenData: wx.canIUse('open-data.type.userAvatarUrl') && wx.canIUse('open-data.type.userNickName'), // 如需尝试获取用户信息可改为false
     background: [],
     studentList: [],
+    teacherList: [],
     productList: [],
     coursesList: [],
     storeInfo: {
@@ -63,22 +64,21 @@ Page({
       }
     })
 
-    // 课程
+    // 课程分类
     wx.request({
-      url: 'http://118.195.176.248:8002/course/page-list',
+      url: 'http://118.195.176.248:8002/course-sort/list',
       method: 'GET',
       data: {
         storeId: _this.data.storeId,
-        current: 1,
-        size: 100
       },
       header: {
         'Accept': 'application/json'
       },
       success: function(res) {
         const resp = res.data
+        console.log(resp.data)
         _this.setData({
-          coursesList: resp.data.records
+          coursesBanner: resp.data
         })
       }
     })
@@ -118,7 +118,25 @@ Page({
         })
       }
     })
-
+    // 名师
+    wx.request({
+      url: 'http://118.195.176.248:8002/style/teacher/page-list',
+      method: 'GET',
+      data: {
+        storeId: _this.data.storeId,
+        current: 1,
+        size: 4
+      },
+      header: {
+        'Accept': 'application/json'
+      },
+      success: function(res) {
+        const resp = res.data
+        _this.setData({
+          teacherList: resp.data.records
+        })
+      }
+    })
     // 学员
     wx.request({
       url: 'http://118.195.176.248:8002/style/student/page-list',
@@ -174,13 +192,23 @@ Page({
   },
   goStudent(e) {
     const id = e.currentTarget.dataset.id || ''
-    const url = '/pages/student/student?id='+id
+    const title = e.currentTarget.dataset.title || ''
+    const url = '/pages/student/student?id='+id+'&title='+title
     wx.navigateTo({ url: url})
   },
   viewCourses(e){
     const id = e.currentTarget.dataset.id || ''
-    const url = '/pages/courses-list/courses-list?id='+id
-    wx.navigateTo({ url: url})
+    const num = e.currentTarget.dataset.num
+    const name = e.currentTarget.dataset.name
+    if(+num) {
+      const url = '/pages/courses-list/courses-list?id='+id+'&name='+name
+      wx.navigateTo({ url: url})
+    } else {
+      wx.showToast({
+        title: '分类暂无课程',
+        icon: 'none'
+      })
+    }
   },
   goAvtiveList() {
     wx.navigateTo({ url: '/pages/events/events' })
@@ -202,5 +230,13 @@ Page({
     const id = e.currentTarget.dataset.id || ''
     const url = '/pages/products/products?id='+id
     wx.navigateTo({ url: url})
+  },
+  //预览图片，放大预览
+  preview(event) {
+    let currentUrl = event.currentTarget.dataset.src
+    wx.previewImage({
+      current: currentUrl, // 当前显示图片的http链接
+      urls: [currentUrl]
+    })
   }
 })
