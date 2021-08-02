@@ -6,6 +6,10 @@ Page({
   data: {
     imgBaseUrl: 'http://118.195.176.248:8001/static/',
     coursesList:[],
+    page: 1,
+    pages: 0,
+    size: 8,
+    noMore: false
   },
 
   /**
@@ -23,7 +27,7 @@ Page({
     this.setData({
       height:wx.getSystemInfoSync().windowHeight
     })
-    this.getList()
+    this.getList(1, true)
   },
 
   /**
@@ -58,14 +62,21 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    console.log('触发了')
+    if (this.data.page < this.data.pages) {
+      this.getList(this.data.page + 1)
+    } else {
+      this.setData({
+        noMore: true
+      })
+    }
   },
 
   /**
@@ -74,14 +85,16 @@ Page({
   onShareAppMessage: function () {
 
   },
-  getList() {
+  getList(pageNo, over) {
     const _this = this
     // 获取课程分类下的课程 (关联店铺)
     wx.request({
-      url: 'http://118.195.176.248:8002/course/list',
+      url: 'http://118.195.176.248:8002/course/page-list',
       method: 'GET',
       data: {
         courseSortId: _this.data.id,
+        current: pageNo,
+        size: _this.data.size
       },
       header: {
         'Accept': 'application/json'
@@ -90,7 +103,9 @@ Page({
         const resp = res.data
         console.log(resp.data)
         _this.setData({
-          coursesList: resp.data
+          page: resp.data.current,
+          pages: resp.data.pages,
+          coursesList: over ? resp.data.records : _this.data.coursesList.concat(resp.data.records)
         })
       }
     })

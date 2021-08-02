@@ -15,6 +15,8 @@
   position: relative;
   top: -230rpx;
   left: 40rpx;
+  border-radius: 16rpx;
+  overflow: hidden;
 }
 .swiper-item{
   height: 318rpx;
@@ -33,6 +35,9 @@
 .popular-title{
   height: 50rpx;
   display: flex;
+}
+.introduction-body {
+  margin-top: 10rpx;
 }
 .popular-border{
   width: 8rpx;
@@ -144,9 +149,10 @@
   height: 750rpx;
 }
 .img-introduction{
-  margin-top: 16rpx;
   width: 100%;
   height: 316rpx;
+  overflow: hidden;
+  border-radius: 16rpx;
 }
 .introduction-text{
   color: #666;
@@ -166,13 +172,17 @@
   border-radius: 16rpx;
   overflow: hidden;
 }
+.swiper-item-student {
+  height: 200rpx;
+}
 .img-student{
   width: 100%;
-  height: 318rpx;
+  height: 200rpx;
+  border-radius: 16rpx;
+  overflow: hidden;
 }
 .student-title{
   background-color: rgba(0,0,0,0.5);
-  border-radius: 0% 0% 10% 10%;
   color: #ffffff;
   align-items: center;
   text-align: center;
@@ -185,6 +195,7 @@
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
+  border-radius: 0 0 16rpx 16rpx;
 }
 .popular-products{
   display: flex;
@@ -232,7 +243,7 @@
   width: 100%;
   height: 160rpx;
   position: fixed;
-  bottom: 0;
+  bottom: -1px;
 }
 .img-bottom{
   width: 100%;

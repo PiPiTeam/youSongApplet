@@ -73,3 +73,16 @@
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
 }
+.title-txt {
+  max-width: 160rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-weight: 600;
+}
+.no-more {
+  text-align: center;
+  font-size: 24rpx;
+  padding: 20rpx 0;
+  color: #ccc;
+}

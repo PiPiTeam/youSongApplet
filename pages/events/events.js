@@ -61,7 +61,7 @@ Page({
   onReachBottom: function () {
       // 下拉触底，先判断是否有请求正在进行中
     // 以及检查当前请求页数是不是小于数据总页数，如符合条件，则发送请求
-    if (!this.loading && this.data.page < this.data.pages) {
+    if (this.data.page < this.data.pages) {
       this.getInfoListData(this.data.page + 1)
     }
   },

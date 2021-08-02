@@ -1,4 +1,6 @@
 {
   "navigationBarTitleText": "课程列表",
-  "usingComponents": {}
+  "usingComponents": {},
+  "enablePullDownRefresh": true,
+  "onReachBottomDistance": 50
 }
