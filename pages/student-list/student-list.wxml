@@ -1,0 +1,22 @@
+<!--pages/student-list/student-list.wxml-->
+<view>
+  <view class="popular-student">
+    <block wx:for="{{studentList}}" wx:key="*this">
+      <view class="student-item" data-id="{{ item.id }}" bindtap="goStudent">
+        <swiper class="swiper-item-student" indicator-dots="{{indicatorDots}}" circular	display-multiple-items="1" indicator-active-color="#FFC892" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+      <block wx:for="{{item.imgFileList}}" wx:key="*this" wx:for-item="stuItem">
+        <swiper-item>
+          <view>
+            <image class="img-student" src="{{ imgBaseUrl + stuItem.path + stuItem.name }}" mode="aspectFill"></image>
+          </view>
+        </swiper-item>
+      </block>
+        </swiper>
+        <view class="student-title">
+          <text class="">{{item.content}}</text>
+        </view>
+      </view>
+    </block>
+  </view>
+  <view class="no-more" wx:if="{{noMore}}">数据加载完毕~</view>
+</view>

@@ -1,15 +1,16 @@
 // pages/events/events.js
 const app = getApp();
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
     storeId: app.globalData.storeId,
+    eventsList:[],
     page: 1,
     pages: 0,
-    eventsList:[],
+    size: 8,
+    noMore: false
   },
 
   /**
@@ -59,10 +60,13 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-      // 下拉触底，先判断是否有请求正在进行中
-    // 以及检查当前请求页数是不是小于数据总页数，如符合条件，则发送请求
+    console.log('触发了')
     if (this.data.page < this.data.pages) {
-      this.getInfoListData(this.data.page + 1)
+      this.getPageList(this.data.page + 1)
+    } else {
+      this.setData({
+        noMore: true
+      })
     }
   },
 
@@ -80,12 +84,12 @@ Page({
   getPageList(pageNo, over) {
     const _this = this
     wx.request({
-      url: 'http://118.195.176.248:8002/activity/page-list',
+      url: `${app.globalData.baseUrl}/activity/page-list`,
       method: 'GET',
       data: {
         storeId: _this.data.storeId,
         current: pageNo,
-        size: 8
+        size: _this.data.size
       },
       header: {
         'Accept': 'application/json'
@@ -93,7 +97,10 @@ Page({
       success: function(res) {
         const resp = res.data
         _this.setData({
-          eventsList: over ? resp.data.records : this.data.eventsList.concat(resp.data.records)
+          noMore: resp.data.total <= resp.data.size,
+          page: resp.data.current,
+          pages: resp.data.pages,
+          eventsList: over ? resp.data.records : _this.data.eventsList.concat(resp.data.records)
         })
       }
     })

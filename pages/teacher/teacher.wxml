@@ -3,7 +3,7 @@
   <!-- 如果有视频链接，显示视频 -->
   <swiper class="swiper-item" indicator-dots="{{indicatorDots}}" circular	display-multiple-items="1"
     indicator-active-color="#FFC892" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
-    <block wx:for="{{studentInfo.imgFileList}}" wx:key="item">
+    <block wx:for="{{studentInfo.imgFileList}}" wx:key="*this">
       <swiper-item>
         <view>
           <image class="img-banner" src="{{ imgBaseUrl + item.path + item.name }}" mode="aspectFit"></image>

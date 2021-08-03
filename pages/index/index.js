@@ -10,7 +10,8 @@ Page({
     }
   },
   data: {
-    imgBaseUrl: 'http://118.195.176.248:8001/static/',
+    baseUrl: app.globalData.baseUrl,
+    imgBaseUrl: app.globalData.imgBaseUrl,
     storeId: '7',
     userInfo: {},
     hasUserInfo: false,
@@ -50,7 +51,7 @@ Page({
     }
     // 请求banner
     wx.request({
-      url: 'http://118.195.176.248:8002/store/7/banner/list',
+      url: `${_this.data.baseUrl}/store/${_this.data.storeId}/banner/list`,
       method: 'GET',
       data: {},
       header: {
@@ -66,7 +67,7 @@ Page({
 
     // 课程分类
     wx.request({
-      url: 'http://118.195.176.248:8002/course-sort/list',
+      url: `${_this.data.baseUrl}/course-sort/list`,
       method: 'GET',
       data: {
         storeId: _this.data.storeId,
@@ -85,7 +86,7 @@ Page({
 
     // 活动
     wx.request({
-      url: 'http://118.195.176.248:8002/activity/page-list',
+      url: `${_this.data.baseUrl}/activity/page-list`,
       method: 'GET',
       data: {
         storeId: _this.data.storeId,
@@ -105,7 +106,7 @@ Page({
 
     // 本店介绍
     wx.request({
-      url: `http://118.195.176.248:8002/store/${_this.data.storeId}/intro`,
+      url: `${_this.data.baseUrl}/store/${_this.data.storeId}/intro`,
       method: 'GET',
       data: {},
       header: {
@@ -120,7 +121,7 @@ Page({
     })
     // 名师
     wx.request({
-      url: 'http://118.195.176.248:8002/style/teacher/page-list',
+      url: `${_this.data.baseUrl}/style/teacher/page-list`,
       method: 'GET',
       data: {
         storeId: _this.data.storeId,
@@ -139,7 +140,7 @@ Page({
     })
     // 学员
     wx.request({
-      url: 'http://118.195.176.248:8002/style/student/page-list',
+      url: `${_this.data.baseUrl}/style/student/page-list`,
       method: 'GET',
       data: {
         storeId: _this.data.storeId,
@@ -159,7 +160,7 @@ Page({
 
     // 产品
     wx.request({
-      url: 'http://118.195.176.248:8002/product/page-list',
+      url: `${_this.data.baseUrl}/product/page-list`,
       method: 'GET',
       data: {
         storeId: _this.data.storeId,
@@ -196,6 +197,12 @@ Page({
     const url = '/pages/student/student?id='+id+'&title='+title
     wx.navigateTo({ url: url})
   },
+  goTeacher(e) {
+    const id = e.currentTarget.dataset.id || ''
+    const title = e.currentTarget.dataset.title || ''
+    const url = '/pages/teacher/teacher?id='+id+'&title='+title
+    wx.navigateTo({ url: url})
+  },
   viewCourses(e){
     const id = e.currentTarget.dataset.id || ''
     const num = e.currentTarget.dataset.num
@@ -205,7 +212,7 @@ Page({
       wx.navigateTo({ url: url})
     } else {
       wx.showToast({
-        title: '分类暂无课程',
+        title: '分类下暂无课程',
         icon: 'none'
       })
     }
@@ -213,13 +220,14 @@ Page({
   goAvtiveList() {
     wx.navigateTo({ url: '/pages/events/events' })
   },
-  getUserInfo(e) {
-    // 不推荐使用getUserInfo获取用户信息，预计自2021年4月13日起，getUserInfo将不再弹出弹窗，并直接返回匿名的用户个人信息
-    console.log(e)
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
-    })
+  goProductList() {
+    wx.navigateTo({ url: '/pages/products-list/products-list' })
+  },
+  goStudentList() {
+    wx.navigateTo({ url: '/pages/student-list/student-list' })
+  },
+  goTeacherList() {
+    wx.navigateTo({ url: '/pages/teacher-list/teacher-list' })
   },
   goEventDetail(e) {
     const id = e.currentTarget.dataset.id || ''
@@ -230,6 +238,14 @@ Page({
     const id = e.currentTarget.dataset.id || ''
     const url = '/pages/products/products?id='+id
     wx.navigateTo({ url: url})
+  },
+  getUserInfo(e) {
+    // 不推荐使用getUserInfo获取用户信息，预计自2021年4月13日起，getUserInfo将不再弹出弹窗，并直接返回匿名的用户个人信息
+    console.log(e)
+    this.setData({
+      userInfo: e.detail.userInfo,
+      hasUserInfo: true
+    })
   },
   //预览图片，放大预览
   preview(event) {

@@ -4,9 +4,13 @@
     "pages/events/events",
     "pages/event-detail/event-detail",
     "pages/student/student",
+    "pages/teacher/teacher",
     "pages/products/products",
     "pages/courses/courses",
-    "pages/courses-list/courses-list"
+    "pages/courses-list/courses-list",
+    "pages/products-list/products-list",
+    "pages/student-list/student-list",
+    "pages/teacher-list/teacher-list"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -1,4 +1,4 @@
-// pages/student/student.js
+// pages/student/teacher.js
 const app = getApp();
 Page({
 
@@ -29,9 +29,9 @@ Page({
     wx.setNavigationBarTitle({
       title: options.title
     })
-    // 学员详情
+    // 名师详情
     wx.request({
-      url: `${app.globalData.baseUrl}/style/student/${_this.data.id}`,
+      url: `${app.globalData.baseUrl}/style/teacher/${_this.data.id}`,
       method: 'GET',
       data: {},
       header: {

@@ -16,6 +16,6 @@
           </view>
         </view>
       </block>
-      <view class="no-more">数据加载完毕~</view>
+      <view class="no-more" wx:if="{{noMore}}">数据加载完毕~</view>
     </view>
 </view>

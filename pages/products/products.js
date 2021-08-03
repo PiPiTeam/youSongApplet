@@ -1,11 +1,12 @@
 // pages/products/products.js
+const app = getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    imgBaseUrl: '//118.195.176.248:8001/static/',
+    imgBaseUrl: app.globalData.imgBaseUrl,
     storeId: '7',
     indicatorDots: true,
     vertical: false,
@@ -24,7 +25,7 @@ Page({
     this.setData({id: options.id})
     // 产品详情
     wx.request({
-      url: `http://118.195.176.248:8002/product/${_this.data.id}`,
+      url: `${app.globalData.baseUrl}/product/${_this.data.id}`,
       method: 'GET',
       data: {},
       header: {

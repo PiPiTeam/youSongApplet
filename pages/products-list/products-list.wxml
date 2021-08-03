@@ -1,0 +1,26 @@
+<!--pages/products-list/products-list.wxml-->
+<view class="products-box">
+  <view class="popular-products">
+    <block wx:for="{{productList}}" wx:key="*this">
+      <view class="swiper-products" data-id="{{ item.id }}" bindtap="goProductDetail">
+        <swiper class="products-image" indicator-dots="{{false}}" circular	display-multiple-items="1" indicator-active-color="#FFC892" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+      <block wx:for="{{item.imgFileList}}" wx:key="*this" wx:for-item="prodItem">
+        <swiper-item>
+          <view class="products-img-box">
+            <image class="img-products" src="{{ imgBaseUrl + prodItem.path + prodItem.name }}" mode="aspectFit"></image>
+          </view>
+        </swiper-item>
+      </block>
+        </swiper>
+        <view class="products-title">
+          <text class="">{{ item.title }}</text>
+        </view>
+        <view class="products-price">
+          <text class="price-icon">￥</text><text class="price">{{ item.discountPrice }}</text>
+        </view>
+      </view>
+    </block>
+  </view>
+  <view class="no-more" wx:if="{{noMore}}">数据加载完毕~</view>
+</view>
+

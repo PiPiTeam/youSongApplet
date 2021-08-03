@@ -5,8 +5,9 @@ Page({
    * 页面的初始数据
    */
   data: {
+    storeId: app.globalData.storeId,
     imgBaseUrl: app.globalData.imgBaseUrl,
-    coursesList:[],
+    productList:[],
     page: 1,
     pages: 0,
     size: 8,
@@ -17,14 +18,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options)
-    this.setData({
-      id: options.id,
-      title: options.name
-    })
-    wx.setNavigationBarTitle({
-      title: options.name
-    })
     this.getList(1, true)
   },
 
@@ -85,12 +78,12 @@ Page({
   },
   getList(pageNo, over) {
     const _this = this
-    // 获取课程分类下的课程 (关联店铺)
+    // 获取分页列表
     wx.request({
-      url: `${app.globalData.baseUrl}/course/page-list`,
+      url: `${app.globalData.baseUrl}/product/page-list`,
       method: 'GET',
       data: {
-        courseSortId: _this.data.id,
+        storeId: _this.data.storeId,
         current: pageNo,
         size: _this.data.size
       },
@@ -99,14 +92,12 @@ Page({
       },
       success: function(res) {
         const resp = res.data
-        const noMore = false
-
         console.log(resp.data)
         _this.setData({
           noMore: resp.data.total <= resp.data.size,
           page: resp.data.current,
           pages: resp.data.pages,
-          coursesList: over ? resp.data.records : _this.data.coursesList.concat(resp.data.records)
+          productList: over ? resp.data.records : _this.data.productList.concat(resp.data.records)
         })
       }
     })
@@ -123,5 +114,10 @@ Page({
       current: currentUrl, // 当前显示图片的http链接
       urls: [currentUrl]
     })
-  }
+  },
+  goProductDetail(e) {
+    const id = e.currentTarget.dataset.id || ''
+    const url = '/pages/products/products?id='+id
+    wx.navigateTo({ url: url})
+  },
 })

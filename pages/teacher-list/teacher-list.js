@@ -1,15 +1,17 @@
-// 获取应用实例
-const app = getApp()
+// pages/teacher-list/teacher-list.js
+const app = getApp();
 Page({
   /**
    * 页面的初始数据
    */
   data: {
+    storeId: app.globalData.storeId,
     imgBaseUrl: app.globalData.imgBaseUrl,
-    coursesList:[],
+    storeId: app.globalData.storeId,
+    teacherList:[],
     page: 1,
     pages: 0,
-    size: 8,
+    size: 16,
     noMore: false
   },
 
@@ -17,15 +19,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options)
-    this.setData({
-      id: options.id,
-      title: options.name
-    })
-    wx.setNavigationBarTitle({
-      title: options.name
-    })
-    this.getList(1, true)
+    // 页面初次加载，请求第一页数据
+    this.getPageList(1, true)
   },
 
   /**
@@ -60,7 +55,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    
+
   },
 
   /**
@@ -69,7 +64,7 @@ Page({
   onReachBottom: function () {
     console.log('触发了')
     if (this.data.page < this.data.pages) {
-      this.getList(this.data.page + 1)
+      this.getPageList(this.data.page + 1)
     } else {
       this.setData({
         noMore: true
@@ -83,14 +78,19 @@ Page({
   onShareAppMessage: function () {
 
   },
-  getList(pageNo, over) {
+  goTeacher(e) {
+    const id = e.currentTarget.dataset.id || ''
+    const title = e.currentTarget.dataset.title || ''
+    const url = '/pages/teacher/teacher?id='+id+'&title='+title
+    wx.navigateTo({ url: url})
+  },
+  getPageList(pageNo, over) {
     const _this = this
-    // 获取课程分类下的课程 (关联店铺)
     wx.request({
-      url: `${app.globalData.baseUrl}/course/page-list`,
+      url: `${app.globalData.baseUrl}/style/teacher/page-list`,
       method: 'GET',
       data: {
-        courseSortId: _this.data.id,
+        storeId: _this.data.storeId,
         current: pageNo,
         size: _this.data.size
       },
@@ -99,29 +99,13 @@ Page({
       },
       success: function(res) {
         const resp = res.data
-        const noMore = false
-
-        console.log(resp.data)
         _this.setData({
           noMore: resp.data.total <= resp.data.size,
           page: resp.data.current,
           pages: resp.data.pages,
-          coursesList: over ? resp.data.records : _this.data.coursesList.concat(resp.data.records)
+          teacherList: over ? resp.data.records : _this.data.teacherList.concat(resp.data.records)
         })
       }
-    })
-  },
-  viewCourses(e){
-    const id = e.currentTarget.dataset.id || ''
-    const url = '/pages/courses/courses?id='+id
-    wx.navigateTo({ url: url})
-  },
-  //预览图片，放大预览
-  preview(event) {
-    let currentUrl = event.currentTarget.dataset.src
-    wx.previewImage({
-      current: currentUrl, // 当前显示图片的http链接
-      urls: [currentUrl]
     })
   }
 })

@@ -4,7 +4,6 @@
 }
 .popular-scroll{
   width: 100%;
-  height: 270rpx;
   margin-top: 20rpx;
 }
 .swiper-courses{

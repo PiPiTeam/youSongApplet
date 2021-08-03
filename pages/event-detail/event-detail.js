@@ -1,11 +1,12 @@
 // pages/event-detail/event-detail.js
+const app = getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    imgBaseUrl: '//118.195.176.248:8001/static/',
+    imgBaseUrl: app.globalData.imgBaseUrl,
     storeId: '7',
     indicatorDots: true,
     vertical: false,
@@ -24,7 +25,7 @@ Page({
     this.setData({id: options.id})
     // 活动详情
     wx.request({
-      url: `http://118.195.176.248:8002/activity/${_this.data.id}`,
+      url: `${app.globalData.baseUrl}/activity/${_this.data.id}`,
       method: 'GET',
       data: {},
       header: {

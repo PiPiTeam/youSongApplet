@@ -92,11 +92,11 @@
         <view><text class="popular-chian">名师风采</text></view>
         <view><text class="popular-english">/Tearch Style</text></view>
       </view>
-      <view><text class="popular-english popular-more">查看更多 ></text></view>
+      <view><text class="popular-english popular-more" bindtap="goTeacherList">查看更多 ></text></view>
   </view>
     <view class="popular-student">
       <block wx:for="{{teacherList}}" wx:key="*this">
-        <view class="student-item" data-id="{{ item.id }}" data-title="{{ item.title }}" bindtap="goStudent">
+        <view class="student-item" data-id="{{ item.id }}" data-title="{{ item.title }}" bindtap="goTeacher">
           <swiper class="swiper-item-student" indicator-dots="{{indicatorDots}}" circular	display-multiple-items="1" indicator-active-color="#FFC892" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
         <block wx:for="{{item.imgFileList}}" wx:key="*this" wx:for-item="stuItem">
           <swiper-item>
@@ -120,7 +120,7 @@
         <view><text class="popular-chian">学员风采</text></view>
         <view><text class="popular-english">/Student Style</text></view>
       </view>
-      <view><text class="popular-english popular-more">查看更多 ></text></view>
+      <view><text class="popular-english popular-more" bindtap="goStudentList">查看更多 ></text></view>
   </view>
     <view class="popular-student">
       <block wx:for="{{studentList}}" wx:key="*this">
@@ -148,7 +148,7 @@
         <view><text class="popular-chian">热销产品</text></view>
         <view><text class="popular-english">/Hot Products</text></view>
       </view>
-      <view><text class="popular-english popular-more">查看更多 ></text></view>
+      <view><text class="popular-english popular-more" bindtap="goProductList">查看更多 ></text></view>
     </view>
     <view class="popular-products">
       <block wx:for="{{productList}}" wx:key="*this">

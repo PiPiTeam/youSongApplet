@@ -1,11 +1,12 @@
 // pages/courses/courses.js
+const app = getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    imgBaseUrl: '//118.195.176.248:8001/static/',
+    imgBaseUrl: app.globalData.imgBaseUrl,
     events:['activity1@2x.png', 'activity2@2x.png', 'activity3@2x.png'],
     indicatorDots: true,
     vertical: false,

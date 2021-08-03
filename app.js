@@ -23,5 +23,7 @@ App({
     appid: 'afdfdsfdsfd',//appid需自己提供，此处的appid我随机编写  
     secret: 'adfdsfdsghhafdhadfhfdhfheegccxda23zf',//secret需自己提供，此处的secret我随机编写 
     openid:'',
+    baseUrl: 'http://118.195.176.248:8002',
+    imgBaseUrl: 'http://118.195.176.248:8001/static/'
   }
 })

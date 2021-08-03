@@ -1,0 +1,21 @@
+/* pages/student/student.wxss */
+.student-body{
+  padding: 0 40rpx;
+}
+.swiper-item{
+  height: 318rpx;
+  border-radius: 8rpx;
+  overflow: hidden;
+  margin-top: 40rpx;
+}
+.img-banner{
+  width: 100%;
+  height: 320rpx;
+  border-radius: 8px;
+}
+.student-title {
+  padding: 20rpx;
+}
+.student-desc {
+  padding: 20rpx;
+}

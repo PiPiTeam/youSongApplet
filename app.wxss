@@ -8,3 +8,9 @@
   padding: 200rpx 0;
   box-sizing: border-box;
 } 
+.no-more {
+  text-align: center;
+  font-size: 24rpx;
+  padding: 20rpx 0;
+  color: #ccc;
+}

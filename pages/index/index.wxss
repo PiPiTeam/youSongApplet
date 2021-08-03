@@ -196,6 +196,8 @@
   text-overflow: ellipsis;
   overflow: hidden;
   border-radius: 0 0 16rpx 16rpx;
+  padding: 0 20rpx;
+  box-sizing: border-box;
 }
 .popular-products{
   display: flex;
