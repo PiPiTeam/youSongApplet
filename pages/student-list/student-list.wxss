@@ -78,6 +78,10 @@
   border-radius: 16rpx;
   overflow: hidden;
 }
+.student-video {
+  width: 100%;
+  height: 100%;
+}
 .swiper-item-student {
   height: 200rpx;
 }

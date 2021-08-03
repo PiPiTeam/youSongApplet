@@ -130,5 +130,8 @@ Page({
   },
   getUserInfo: function (e) {
     console.log(e)
-  }
+  },
+  getPhoneNumber: function (e) {
+    console.log(e)
+  },
 })

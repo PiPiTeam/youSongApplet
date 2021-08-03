@@ -199,7 +199,7 @@ App({
     storeInfo: null, // 店铺信息
     userInfo: null,
     openid: '',
-    siteBaseUrl: 'http://172.18.10.5:8002',
+    siteBaseUrl: 'http://118.195.176.248:8002', // 172.18.10.5
     imgBaseUrl: 'http://118.195.176.248:8001/static/'
   }
 })

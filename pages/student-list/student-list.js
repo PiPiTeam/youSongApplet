@@ -95,12 +95,18 @@ Page({
       },
       url: `/style/student/page-list`,
       success: function(resp) {
+        resp.data.records.map(function(item) {
+          if(item.videoContent) {
+            item.video = JSON.parse(item.videoContent)[0]
+          }
+        })
         _this.setData({
           noMore: resp.data.total <= resp.data.size,
           page: resp.data.current,
           pages: resp.data.pages,
           studentList: over ? resp.data.records : _this.data.studentList.concat(resp.data.records)
         })
+        console.log(_this.data.studentList)
       }
     };
     app.sendRequest(parms)
