@@ -9,6 +9,8 @@ App({
 
     // 登录
     this.getUserInfo()
+    // 获取店铺信息
+    this.getStoreInfo()
   },
   sendRequest: function (param, customSiteUrl) {
     let that = this;
@@ -148,9 +150,6 @@ App({
       }
     })
   },
-  getStoreId() {
-
-  },
   getUserInfo: function () {
     let that = this
     console.log(myutil.isEmpty(that.globalData.userInfo))
@@ -176,13 +175,31 @@ App({
       return that.globalData.userInfo
     }
   },
+  getStoreInfo: function (callback) {
+    const _this = this
+    let parms = {
+      method: 'get',
+      data: {
+        serviceid: this.globalData.serviceid
+      },
+      url: '/store',
+      success: function (resp) {
+        _this.globalData.storeId = resp.data.id
+        _this.globalData.storeInfo = resp.data
+        console.log('storeId', _this.globalData.storeId)
+        callback && callback()
+      }
+    }
+    this.sendRequest(parms)
+  },
   globalData: {
-    storeId: '7',
+    appid: 'wx3f0c649db3da5e82', //appid  
+    serviceid: '71FBD63F332146ADBD7B33372B8C1389', // 服务id
+    storeId: '', // 店铺id
+    storeInfo: null, // 店铺信息
     userInfo: null,
-    appid: 'wx3f0c649db3da5e82', //appid需自己提供，此处的appid我随机编写  
-    secret: 'adfdsfdsghhafdhadfhfdhfheegccxda23zf', //secret需自己提供，此处的secret我随机编写 
     openid: '',
-    siteBaseUrl: 'http://118.195.176.248:8002',
+    siteBaseUrl: 'http://172.18.10.5:8002',
     imgBaseUrl: 'http://118.195.176.248:8001/static/'
   }
 })

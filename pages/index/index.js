@@ -48,6 +48,13 @@ Page({
         canIUseGetUserProfile: true
       })
     }
+    if (app.globalData.storeId) {
+      this.initData()
+    } else {
+      app.getStoreInfo(this.initData)
+    }
+  },
+  initData() {
     // 请求banner
     this.getBanner()
     // 课程分类
