@@ -86,26 +86,23 @@ Page({
   },
   getPageList(pageNo, over) {
     const _this = this
-    wx.request({
-      url: `${app.globalData.baseUrl}/style/teacher/page-list`,
-      method: 'GET',
+    let parms = {
+      method: 'get',
       data: {
-        storeId: _this.data.storeId,
         current: pageNo,
-        size: _this.data.size
+        size: this.data.size,
+        storeId: app.globalData.storeId,
       },
-      header: {
-        'Accept': 'application/json'
-      },
-      success: function(res) {
-        const resp = res.data
+      url: `/style/teacher/page-list`,
+      success: function(resp) {
         _this.setData({
           noMore: resp.data.total <= resp.data.size,
           page: resp.data.current,
           pages: resp.data.pages,
-          teacherList: over ? resp.data.records : _this.data.teacherList.concat(resp.data.records)
+          teacherList: over ? resp.data.records : _this.data.studentList.concat(resp.data.records)
         })
       }
-    })
+    };
+    app.sendRequest(parms)
   }
 })

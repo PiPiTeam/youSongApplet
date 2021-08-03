@@ -79,20 +79,15 @@ Page({
   getList(pageNo, over) {
     const _this = this
     // 获取分页列表
-    wx.request({
-      url: `${app.globalData.baseUrl}/product/page-list`,
-      method: 'GET',
+    let parms = {
+      method: 'get',
       data: {
-        storeId: _this.data.storeId,
         current: pageNo,
-        size: _this.data.size
+        size: this.data.size,
+        storeId: app.globalData.storeId,
       },
-      header: {
-        'Accept': 'application/json'
-      },
-      success: function(res) {
-        const resp = res.data
-        console.log(resp.data)
+      url: `/product/page-list`,
+      success: function(resp) {
         _this.setData({
           noMore: resp.data.total <= resp.data.size,
           page: resp.data.current,
@@ -100,7 +95,8 @@ Page({
           productList: over ? resp.data.records : _this.data.productList.concat(resp.data.records)
         })
       }
-    })
+    };
+    app.sendRequest(parms)
   },
   viewCourses(e){
     const id = e.currentTarget.dataset.id || ''

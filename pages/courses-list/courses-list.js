@@ -86,22 +86,15 @@ Page({
   getList(pageNo, over) {
     const _this = this
     // 获取课程分类下的课程 (关联店铺)
-    wx.request({
-      url: `${app.globalData.baseUrl}/course/page-list`,
-      method: 'GET',
+    let courseParms = {
+      method: 'get',
       data: {
-        courseSortId: _this.data.id,
         current: pageNo,
-        size: _this.data.size
+        size: this.data.size,
+        courseSortId: this.data.id,
       },
-      header: {
-        'Accept': 'application/json'
-      },
-      success: function(res) {
-        const resp = res.data
-        const noMore = false
-
-        console.log(resp.data)
+      url: `/course/page-list`,
+      success: function(resp) {
         _this.setData({
           noMore: resp.data.total <= resp.data.size,
           page: resp.data.current,
@@ -109,7 +102,8 @@ Page({
           coursesList: over ? resp.data.records : _this.data.coursesList.concat(resp.data.records)
         })
       }
-    })
+    };
+    app.sendRequest(courseParms)
   },
   viewCourses(e){
     const id = e.currentTarget.dataset.id || ''

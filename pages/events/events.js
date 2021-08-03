@@ -83,19 +83,15 @@ Page({
   },
   getPageList(pageNo, over) {
     const _this = this
-    wx.request({
-      url: `${app.globalData.baseUrl}/activity/page-list`,
-      method: 'GET',
+    let parms = {
+      method: 'get',
       data: {
-        storeId: _this.data.storeId,
         current: pageNo,
-        size: _this.data.size
+        size: this.data.size,
+        storeId: app.globalData.storeId,
       },
-      header: {
-        'Accept': 'application/json'
-      },
-      success: function(res) {
-        const resp = res.data
+      url: `/activity/page-list`,
+      success: function(resp) {
         _this.setData({
           noMore: resp.data.total <= resp.data.size,
           page: resp.data.current,
@@ -103,6 +99,7 @@ Page({
           eventsList: over ? resp.data.records : _this.data.eventsList.concat(resp.data.records)
         })
       }
-    })
+    };
+    app.sendRequest(parms)
   }
 })

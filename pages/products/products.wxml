@@ -15,7 +15,7 @@
   <!-- 描述 -->
   <view class="student-desc">{{ activeInfo.content }}</view>
   <view class="btn-row">
-    <!-- <button class="btn" type="primary" plain="true" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">感兴趣</button> -->
-    <button class="btn" type="primary" plain="true">感兴趣</button>
+    <button wx:if="{{canIUse}}" class="btn" type="primary" plain="true" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">感兴趣</button>
+    <!-- <button class="btn" type="primary" plain="true">感兴趣</button> -->
   </view>
 </view>

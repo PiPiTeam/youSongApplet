@@ -24,21 +24,18 @@ Page({
     const _this = this
     this.setData({id: options.id})
     // 活动详情
-    wx.request({
-      url: `${app.globalData.baseUrl}/activity/${_this.data.id}`,
-      method: 'GET',
+    let parms = {
+      method: 'get',
       data: {},
-      header: {
-        'Accept': 'application/json'
-      },
-      success: function(res) {
-        const resp = res.data
+      url: `/activity/${_this.data.id}`,
+      success: function(resp) {
         wx.setNavigationBarTitle({
           title: resp.data.title
         })
         _this.setData({htmlSnip: resp.data.content})
       }
-    })
+    };
+    app.sendRequest(parms)
   },
 
   /**

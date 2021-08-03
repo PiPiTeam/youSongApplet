@@ -10,7 +10,6 @@ Page({
     }
   },
   data: {
-    baseUrl: app.globalData.baseUrl,
     imgBaseUrl: app.globalData.imgBaseUrl,
     storeId: '7',
     userInfo: {},
@@ -27,9 +26,9 @@ Page({
       content: '',
       imgFileList: []
     },
-    events:[],
-    coursesBanner: ['guitar@2x.png','piano@2x.png','sachs@2x.png', 'violin@2x.png','drum_kit@2x.png', 'guzheng@2x.png', 'africandrum@2x.png', 'pop_vocal@2x.png', 'ukulele@2x.png',],
-    coursesName: ['吉他课程', '钢琴课程', '萨克斯课程', '小提琴课程', '架子鼓课程', '古筝课程', '非洲鼓课程', '流行声乐课程', '尤克里里课程' ],
+    events: [],
+    coursesBanner: ['guitar@2x.png', 'piano@2x.png', 'sachs@2x.png', 'violin@2x.png', 'drum_kit@2x.png', 'guzheng@2x.png', 'africandrum@2x.png', 'pop_vocal@2x.png', 'ukulele@2x.png', ],
+    coursesName: ['吉他课程', '钢琴课程', '萨克斯课程', '小提琴课程', '架子鼓课程', '古筝课程', '非洲鼓课程', '流行声乐课程', '尤克里里课程'],
     indicatorDots: true,
     vertical: false,
     autoplay: true,
@@ -50,133 +49,135 @@ Page({
       })
     }
     // 请求banner
-    wx.request({
-      url: `${_this.data.baseUrl}/store/${_this.data.storeId}/banner/list`,
-      method: 'GET',
-      data: {},
-      header: {
-        'Accept': 'application/json'
-      },
-      success: function(res) {
-        const resp = res.data
-        _this.setData({
-          background: resp.data
-        })
-      }
-    })
-
+    this.getBanner()
     // 课程分类
-    wx.request({
-      url: `${_this.data.baseUrl}/course-sort/list`,
-      method: 'GET',
-      data: {
-        storeId: _this.data.storeId,
-      },
-      header: {
-        'Accept': 'application/json'
-      },
-      success: function(res) {
-        const resp = res.data
-        console.log(resp.data)
-        _this.setData({
-          coursesBanner: resp.data
-        })
-      }
-    })
-
+    this.getCourseList()
     // 活动
-    wx.request({
-      url: `${_this.data.baseUrl}/activity/page-list`,
-      method: 'GET',
-      data: {
-        storeId: _this.data.storeId,
-        current: 1,
-        size: 3
-      },
-      header: {
-        'Accept': 'application/json'
-      },
-      success: function(res) {
-        const resp = res.data
-        _this.setData({
-          events: resp.data.records
-        })
-      }
-    })
-
+    this.getActivityList()
     // 本店介绍
-    wx.request({
-      url: `${_this.data.baseUrl}/store/${_this.data.storeId}/intro`,
-      method: 'GET',
-      data: {},
-      header: {
-        'Accept': 'application/json'
-      },
-      success: function(res) {
-        const resp = res.data
-        _this.setData({
-          storeInfo: resp.data
-        })
-      }
-    })
+    this.getStoreInfo()
     // 名师
-    wx.request({
-      url: `${_this.data.baseUrl}/style/teacher/page-list`,
-      method: 'GET',
-      data: {
-        storeId: _this.data.storeId,
-        current: 1,
-        size: 4
-      },
-      header: {
-        'Accept': 'application/json'
-      },
-      success: function(res) {
-        const resp = res.data
-        _this.setData({
-          teacherList: resp.data.records
-        })
-      }
-    })
+    this.getTeacherList()
     // 学员
-    wx.request({
-      url: `${_this.data.baseUrl}/style/student/page-list`,
-      method: 'GET',
-      data: {
-        storeId: _this.data.storeId,
-        current: 1,
-        size: 4
-      },
-      header: {
-        'Accept': 'application/json'
-      },
-      success: function(res) {
-        const resp = res.data
-        _this.setData({
-          studentList: resp.data.records
-        })
-      }
-    })
-
+    this.getStudentList()
     // 产品
-    wx.request({
-      url: `${_this.data.baseUrl}/product/page-list`,
-      method: 'GET',
-      data: {
-        storeId: _this.data.storeId,
-        current: 1,
-        size: 4
-      },
-      header: {
-        'Accept': 'application/json'
-      },
-      success: function(res) {
-        const resp = res.data
+    this.getProductList()
+  },
+  getBanner() {
+    const _this = this
+    let bannerParms = {
+      method: 'get',
+      data: {},
+      url: `/store/${app.globalData.storeId}/banner/list`,
+      success: function (res) {
         _this.setData({
-          productList: resp.data.records
+          background: res.data
         })
       }
-    })
+    };
+    app.sendRequest(bannerParms)
+  },
+  getCourseList() {
+    const _this = this
+    let courseParms = {
+      method: 'get',
+      data: {
+        storeId: app.globalData.storeId,
+      },
+      url: `/course-sort/list`,
+      success: function (res) {
+        _this.setData({
+          coursesBanner: res.data
+        })
+      }
+    };
+    app.sendRequest(courseParms)
+  },
+  getActivityList() {
+    const _this = this
+    let activityParms = {
+      method: 'get',
+      data: {
+        current: 1,
+        size: 3,
+        storeId: app.globalData.storeId,
+      },
+      url: `/activity/page-list`,
+      success: function (res) {
+        _this.setData({
+          events: res.data.records
+        })
+      }
+    };
+    app.sendRequest(activityParms)
+  },
+  getStoreInfo() {
+    const _this = this
+    let storeInfoParms = {
+      method: 'get',
+      data: {},
+      url: `/store/${app.globalData.storeId}/intro`,
+      success: function (res) {
+        _this.setData({
+          storeInfo: res.data
+        })
+      }
+    };
+    app.sendRequest(storeInfoParms)
+  },
+  getTeacherList() {
+    const _this = this
+    let teacherParms = {
+      method: 'get',
+      data: {
+        current: 1,
+        size: 4,
+        storeId: app.globalData.storeId,
+      },
+      url: `/style/teacher/page-list`,
+      success: function (res) {
+        _this.setData({
+          teacherList: res.data.records
+        })
+      }
+    };
+    app.sendRequest(teacherParms)
+  },
+  getStudentList() {
+    const _this = this
+    let teacherParms = {
+      method: 'get',
+      data: {
+        current: 1,
+        size: 4,
+        storeId: app.globalData.storeId,
+      },
+      url: `/style/student/page-list`,
+      success: function (res) {
+        _this.setData({
+          studentList: res.data.records
+        })
+      }
+    };
+    app.sendRequest(teacherParms)
+  },
+  getProductList() {
+    const _this = this
+    let productParms = {
+      method: 'get',
+      data: {
+        current: 1,
+        size: 4,
+        storeId: app.globalData.storeId,
+      },
+      url: `/product/page-list`,
+      success: function (res) {
+        _this.setData({
+          productList: res.data.records
+        })
+      }
+    };
+    app.sendRequest(productParms)
   },
   getUserProfile(e) {
     // 推荐使用wx.getUserProfile获取用户信息，开发者每次通过该接口获取用户个人信息均需用户确认，开发者妥善保管用户快速填写的头像昵称，避免重复弹窗
@@ -194,22 +195,28 @@ Page({
   goStudent(e) {
     const id = e.currentTarget.dataset.id || ''
     const title = e.currentTarget.dataset.title || ''
-    const url = '/pages/student/student?id='+id+'&title='+title
-    wx.navigateTo({ url: url})
+    const url = '/pages/student/student?id=' + id + '&title=' + title
+    wx.navigateTo({
+      url: url
+    })
   },
   goTeacher(e) {
     const id = e.currentTarget.dataset.id || ''
     const title = e.currentTarget.dataset.title || ''
-    const url = '/pages/teacher/teacher?id='+id+'&title='+title
-    wx.navigateTo({ url: url})
+    const url = '/pages/teacher/teacher?id=' + id + '&title=' + title
+    wx.navigateTo({
+      url: url
+    })
   },
-  viewCourses(e){
+  viewCourses(e) {
     const id = e.currentTarget.dataset.id || ''
     const num = e.currentTarget.dataset.num
     const name = e.currentTarget.dataset.name
-    if(+num) {
-      const url = '/pages/courses-list/courses-list?id='+id+'&name='+name
-      wx.navigateTo({ url: url})
+    if (+num) {
+      const url = '/pages/courses-list/courses-list?id=' + id + '&name=' + name
+      wx.navigateTo({
+        url: url
+      })
     } else {
       wx.showToast({
         title: '分类下暂无课程',
@@ -218,26 +225,38 @@ Page({
     }
   },
   goAvtiveList() {
-    wx.navigateTo({ url: '/pages/events/events' })
+    wx.navigateTo({
+      url: '/pages/events/events'
+    })
   },
   goProductList() {
-    wx.navigateTo({ url: '/pages/products-list/products-list' })
+    wx.navigateTo({
+      url: '/pages/products-list/products-list'
+    })
   },
   goStudentList() {
-    wx.navigateTo({ url: '/pages/student-list/student-list' })
+    wx.navigateTo({
+      url: '/pages/student-list/student-list'
+    })
   },
   goTeacherList() {
-    wx.navigateTo({ url: '/pages/teacher-list/teacher-list' })
+    wx.navigateTo({
+      url: '/pages/teacher-list/teacher-list'
+    })
   },
   goEventDetail(e) {
     const id = e.currentTarget.dataset.id || ''
-    const url = '/pages/event-detail/event-detail?id='+id
-    wx.navigateTo({ url: url})
+    const url = '/pages/event-detail/event-detail?id=' + id
+    wx.navigateTo({
+      url: url
+    })
   },
   goProductDetail(e) {
     const id = e.currentTarget.dataset.id || ''
-    const url = '/pages/products/products?id='+id
-    wx.navigateTo({ url: url})
+    const url = '/pages/products/products?id=' + id
+    wx.navigateTo({
+      url: url
+    })
   },
   getUserInfo(e) {
     // 不推荐使用getUserInfo获取用户信息，预计自2021年4月13日起，getUserInfo将不再弹出弹窗，并直接返回匿名的用户个人信息

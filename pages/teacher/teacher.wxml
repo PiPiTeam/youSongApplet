@@ -1,4 +1,4 @@
-<!--pages/student/student.wxml-->
+<!--pages/teacher/teacher.wxml-->
 <view class="student-body">
   <!-- 如果有视频链接，显示视频 -->
   <swiper class="swiper-item" indicator-dots="{{indicatorDots}}" circular	display-multiple-items="1"

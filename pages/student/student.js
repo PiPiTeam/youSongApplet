@@ -30,22 +30,19 @@ Page({
       title: options.title
     })
     // 学员详情
-    wx.request({
-      url: `${app.globalData.baseUrl}/style/student/${_this.data.id}`,
-      method: 'GET',
+    let parms = {
+      method: 'get',
       data: {},
-      header: {
-        'Accept': 'application/json'
-      },
-      success: function(res) {
-        const resp = res.data
+      url: `/style/student/${_this.data.id}`,
+      success: function(resp) {
         const indicatorDots = resp.data.imgFileList.length > 1 ? true : false
         _this.setData({
           studentInfo: resp.data,
           indicatorDots: indicatorDots
         })
       }
-    })
+    };
+    app.sendRequest(parms)
   },
 
   /**
