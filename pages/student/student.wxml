@@ -1,7 +1,8 @@
 <!--pages/student/student.wxml-->
 <view class="student-body">
   <!-- 如果有视频链接，显示视频 -->
-  <swiper class="swiper-item" indicator-dots="{{indicatorDots}}" circular	display-multiple-items="1"
+  <video class="student-video" wx:if="{{studentInfo.videoContent}}" src="{{studentInfo.video.url}}"></video>
+  <swiper wx:else class="swiper-item" indicator-dots="{{indicatorDots}}" circular	display-multiple-items="1"
     indicator-active-color="#FFC892" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
     <block wx:for="{{studentInfo.imgFileList}}" wx:key="item">
       <swiper-item>

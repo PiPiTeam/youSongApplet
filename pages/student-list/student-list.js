@@ -98,6 +98,7 @@ Page({
         resp.data.records.map(function(item) {
           if(item.videoContent) {
             item.video = JSON.parse(item.videoContent)[0]
+            item.videoIsPlay = false
           }
         })
         _this.setData({
@@ -110,5 +111,20 @@ Page({
       }
     };
     app.sendRequest(parms)
-  }
+  },
+  videoPlay: function(e) {
+    const index = e.currentTarget.dataset.index
+    const setPlay = `studentList[${index}].videoIsPlay`
+    console.log(setPlay)
+    this.setData({
+      [setPlay]: true
+    })
+  },
+  videoPause: function(e) {
+    const index = e.currentTarget.dataset.index
+    const setPlay = `studentList[${index}].videoIsPlay`
+    this.setData({
+      [setPlay]: false
+    })
+  },
 })

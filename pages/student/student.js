@@ -36,6 +36,9 @@ Page({
       url: `/style/student/${_this.data.id}`,
       success: function(resp) {
         const indicatorDots = resp.data.imgFileList.length > 1 ? true : false
+        if(resp.data.videoContent) {
+          resp.data.video = JSON.parse(resp.data.videoContent)[0]
+        }
         _this.setData({
           studentInfo: resp.data,
           indicatorDots: indicatorDots

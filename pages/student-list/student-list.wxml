@@ -1,9 +1,9 @@
 <!--pages/student-list/student-list.wxml-->
 <view>
   <view class="popular-student">
-    <block wx:for="{{studentList}}" wx:key="*this">
+    <block wx:for="{{studentList}}" wx:key="id">
       <view class="student-item" data-id="{{ item.id }}">
-        <video class="student-video" wx:if="{{item.videoContent}}" src="{{item.video.url}}"></video>
+        <video class="student-video" wx:if="{{item.videoContent}}" src="{{item.video.url}}" data-index="{{index}}" bindplay="videoPlay" bindpause="videoPause" bindended="videoPause"></video>
         <swiper wx:else class="swiper-item-student" indicator-dots="{{indicatorDots}}" circular	display-multiple-items="1" indicator-active-color="#FFC892" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
       <block wx:for="{{item.imgFileList}}" wx:key="*this" wx:for-item="stuItem">
         <swiper-item>
@@ -13,7 +13,7 @@
         </swiper-item>
       </block>
         </swiper>
-        <view class="student-title">
+        <view class="student-title" wx:if="{{!item.videoIsPlay}}">
           <text data-id="{{ item.id }}" bindtap="goStudent">{{item.content}}</text>
         </view>
       </view>

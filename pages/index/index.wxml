@@ -26,7 +26,7 @@
         <block wx:for="{{coursesBanner}}" wx:key="*this">
           <swiper-item>
             <view class="swiper-courses" bindtap="viewCourses" data-id="{{item.id}}" data-num="{{item.courserNum}}" data-name="{{item.name}}">
-              <image class="img-courses" src="{{imgBaseUrl + item.coverImage}}" mode="aspectFit"></image>
+              <image bindlongtap="preview" class="img-courses" data-src="{{imgBaseUrl + item.coverImage}}" src="{{imgBaseUrl + item.coverImage}}" mode="aspectFit"></image>
               <view class="">
                 <text class="">{{item.name}}</text>
               </view>
@@ -47,9 +47,9 @@
     </view>
     <view class="popular-scroll">
       <block wx:for="{{events}}" wx:key="*this">
-        <view class="swiper-courses popular-events" data-id="{{item.id}}" bindtap="goEventDetail">
-          <image class="img-events" src="{{item.image}}" mode="aspectFill"></image>
-          <view class="events-right">
+        <view class="swiper-courses popular-events">
+          <image class="img-events" src="{{item.image}}" data-src="{{item.image}}" mode="aspectFill" bindtap="preview"></image>
+          <view class="events-right" data-id="{{item.id}}" bindtap="goEventDetail">
             <view class="events-title">
               <view class="events-header">
                 <view class="title-txt"><text>{{item.title}}</text></view>
@@ -101,7 +101,7 @@
         <block wx:for="{{item.imgFileList}}" wx:key="*this" wx:for-item="stuItem">
           <swiper-item>
             <view>
-              <image class="img-student" src="{{ imgBaseUrl + stuItem.path + stuItem.name }}" mode="aspectFill"></image>
+              <image class="img-student" src="{{ imgBaseUrl + stuItem.path + stuItem.name }}" data-src="{{ imgBaseUrl + stuItem.path + stuItem.name }}" bindlongtap="preview" mode="aspectFill"></image>
             </view>
           </swiper-item>
         </block>
@@ -129,7 +129,7 @@
         <block wx:for="{{item.imgFileList}}" wx:key="*this" wx:for-item="stuItem">
           <swiper-item>
             <view>
-              <image class="img-student" src="{{ imgBaseUrl + stuItem.path + stuItem.name }}" mode="aspectFill"></image>
+              <image class="img-student" src="{{ imgBaseUrl + stuItem.path + stuItem.name }}" data-src="{{ imgBaseUrl + stuItem.path + stuItem.name }}" mode="aspectFill" bindlongtap="preview"></image>
             </view>
           </swiper-item>
         </block>
@@ -157,7 +157,7 @@
         <block wx:for="{{item.imgFileList}}" wx:key="*this" wx:for-item="prodItem">
           <swiper-item>
             <view class="products-img-box">
-              <image class="img-products" src="{{ imgBaseUrl + prodItem.path + prodItem.name }}" mode="aspectFit"></image>
+              <image class="img-products" src="{{ imgBaseUrl + prodItem.path + prodItem.name }}" data-src="{{ imgBaseUrl + prodItem.path + prodItem.name }}" mode="aspectFit" bindlongtap="preview"></image>
             </view>
           </swiper-item>
         </block>

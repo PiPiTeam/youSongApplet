@@ -2,6 +2,10 @@
 .student-body{
   padding: 0 40rpx;
 }
+.student-video {
+  width: 100%;
+  margin-top: 10rpx;
+}
 .swiper-item{
   height: 318rpx;
   border-radius: 8rpx;
